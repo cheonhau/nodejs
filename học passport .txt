@@ -1,0 +1,3 @@
+https://viblo.asia/p/passport-trong-nodejs-authentication-1VgZvwdrlAw
+http://www.passportjs.org/docs/downloads/html/
+https://www.freecodecamp.org/news/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e/

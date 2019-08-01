@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://www.toptal.com/nodejs/secure-rest-api-in-nodejs -->
+<html lang="en" class=" flexbox flexboxlegacy no-flexboxtweener flexwrap cssgradients objectfit object-fit csspositionsticky rgba csstransforms csstransitions history localstorage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="./Creating a Secure REST API in Node.js _ Toptal_files/e3359cee6b"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/nr-1130.min.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/495f6b46-fc7e-4bee-b3f3-94347fcadb83-async.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/qevents.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/f.txt"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/recaptcha__vi.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/analytics.js"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/2799924.js" type="text/javascript" id="hs-analytics"></script><script async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/widgets.js"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/api.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/insight.min.js"></script><script async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/analytics(1).js"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/inferredEvents.js" async=""></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/463369723801939" async=""></script><script async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/fbevents.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/analytics.min.js"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/pixel.js" async=""></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/bat.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/insight.min.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/5977.js"></script><script async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/gtm.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"e3359cee6b","applicationID":"48777225","transactionName":"JV0NEUYJCQkARxgVEwReCgYbBAkKAhpHChUSQUwWXAkS","queueTime":0,"applicationTime":417,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgcEVlJaGwcIU1ZVBQMC"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(18),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(19),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(21)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(21)(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(21)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(21)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(21)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(){var t=window.NREUM,n=t.info.accountID||null,e=t.info.agentID||null,r=t.info.trustKey||null,i="btoa"in window&&"function"==typeof window.btoa;if(!n||!e||!i)return null;var a={v:[0,1],d:{ty:"Browser",ac:n,ap:e,id:o.generateCatId(),tr:o.generateCatId(),ti:Date.now()}};return r&&n!==r&&(a.d.tk=r),btoa(JSON.stringify(a))}var o=t(16);n.exports={generateTraceHeader:r}},{}],11:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(12),u=t(10).generateTraceHeader,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(15),w=t(14),v=window.XMLHttpRequest;s.features.xhr=!0,t(9),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=!1;if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(e=!!NREUM.init.distributed_tracing.enabled),e&&this.sameOrigin){var r=u();r&&n.setRequestHeader("newrelic",r)}}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)})}},{}],12:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],13:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(18),s=t(19),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],14:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],15:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],16:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],17:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],18:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],19:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],20:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],21:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(19),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(18),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(18),u=t("ee"),d=t(17),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1130.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:x,userAgent:d};t(13),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,R=t(20)},{}]},{},["loader",2,11,4,3]);</script><script type="application/ld+json">{"@context":"http://schema.org","type":"Article","url":"https://www.toptal.com/nodejs/secure-rest-api-in-nodejs","name":"Creating a Secure REST API in Node.js","datePublished":"Thu, 09 Aug 2018 09:16:00 -0400","headline":"Creating a Secure REST API in Node.js","author":{"@type":"Person","name":"Marcos Henrique da Silva","image":"https://uploads.toptal.io/user/photo/441457/small_aae33a693e6c00a964ccb332f61a3fe2.jpeg"},"image":"https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/15922/cover-secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png","publisher":{"@type":"Organization","name":"Toptal","logo":{"@type":"ImageObject","width":32,"height":32,"url":"//bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon32x32_f5a6dd.png"}},"mainEntityOfPage":"https://www.toptal.com/nodejs/secure-rest-api-in-nodejs"}</script><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Creating a Secure REST API in Node.js | Toptal</title><meta content="As patterns go, REST APIs are so useful and ubiquitous that every web developer, regardless of language or platform, should know how to build one." name="description"><meta content="Creating a Secure REST API in Node.js" property="og:title"><meta content="As patterns go, REST APIs are so useful and ubiquitous that every web developer, regardless of language or platform, should know how to build one." property="og:description"><meta content="https://bs-uploads.toptal.io/blackfish-uploads/blog/post/seo/og_image_file/og_image/15921/secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png" property="og:image"><meta content="Toptal Engineering Blog" property="og:site_name"><link href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs" rel="canonical"><link rel="alternate" hreflang="x-default" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs"><link rel="alternate" hreflang="en" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs"><link href="https://bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon32x32_466957.ico" rel="icon" sizes="32x32"><link href="https://bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon32x32_f5a6dd.png" rel="icon" sizes="32x32"><link href="https://bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon57x57_5bbeab.png" rel="apple-touch-icon" sizes="57x57"><link href="https://bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon72x72_a31783.png" rel="apple-touch-icon" sizes="72x72"><link href="https://bs-assets.toptal.io/blackfish-assets/public/base/images/favicons/toptal-blog-favicon114x114_a31d62.png" rel="apple-touch-icon" sizes="114x114"><script>
+//<![CDATA[
+window.gon={};gon.env="production";gon.api_sessions_url="https://www.toptal.com/api/cms/sessions";gon.api_shorten_url="https://www.toptal.com/shorten_url";gon.geo_target_url="https://www.toptal.com/api/geo_target";gon.referrers_url="https://www.toptal.com/referrers";gon.flash={};gon.google_api_browser_key="AIzaSyDED9v55b-c1opDYMEDYBkOgDFGlBMICGY";gon.google_maps_api_browser_key="AIzaSyB-X6Stk7LlgQ9uRv3901GP-XVKXqtbY3w";gon.recaptcha_site_key="6LfgR1UUAAAAAJ8-zrjvTk18gKat-4CdBPSrUJoR";gon.recaptcha_url="https://www.google.com/recaptcha/api.js";gon.chameleon_participant_uuid="46786d01-13e8-41ec-84e1-4c5f7854f972";gon.url_share_counter=129;gon.ga_settings={"group":"Blog posts"};gon.fullstory_rate=0;gon.fullstory_enabled=false;gon.fullstory_org_key="1YmX";gon.load_twitter_widgets=true;
+//]]>
+</script><script>
+//<![CDATA[
+/*! modernizr 3.6.0 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-cssgradients-csspositionsticky-csstransforms-csstransitions-flexbox-flexboxlegacy-flexboxtweener-flexwrap-history-input-localstorage-objectfit-rgba-prefixed-setclasses !*/
+ !function(e,t,n){function r(e,t){return typeof e===t}function o(){var e,t,n,o,i,s,a;for(var l in x)if(x.hasOwnProperty(l)){if(e=[],t=x[l],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(n=0;n<t.options.aliases.length;n++)e.push(t.options.aliases[n].toLowerCase());for(o=r(t.fn,"function")?t.fn():t.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),C.push((o?"":"no-")+a.join("-"))}}function i(e){var t=w.className,n=Modernizr._config.classPrefix||"";if(S&&(t=t.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+n+"no-js(\\s|$)");t=t.replace(r,"$1"+n+"js$2")}Modernizr._config.enableClasses&&(t+=" "+n+e.join(" "+n),S?w.className.baseVal=t:w.className=t)}function s(e,t){return!!~(""+e).indexOf(t)}function a(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):S?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function l(){var e=t.body;return e||(e=a(S?"svg":"body"),e.fake=!0),e}function f(e,n,r,o){var i,s,f,u,d="modernizr",c=a("div"),p=l();if(parseInt(r,10))for(;r--;)f=a("div"),f.id=o?o[r]:d+(r+1),c.appendChild(f);return i=a("style"),i.type="text/css",i.id="s"+d,(p.fake?p:c).appendChild(i),p.appendChild(c),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),c.id=d,p.fake&&(p.style.background="",p.style.overflow="hidden",u=w.style.overflow,w.style.overflow="hidden",w.appendChild(p)),s=n(c,e),p.fake?(p.parentNode.removeChild(p),w.style.overflow=u,w.offsetHeight):c.parentNode.removeChild(c),!!s}function u(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(t,n,r){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,t,n);var i=e.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!n&&t.currentStyle&&t.currentStyle[r];return o}function c(t,r){var o=t.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(u(t[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+u(t[o])+":"+r+")");return i=i.join(" or "),f("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==d(e,null,"position")})}return n}function p(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,n){return t+n.toUpperCase()}).replace(/^-/,"")}function g(e,t,o,i){function l(){u&&(delete k.style,delete k.modElem)}if(i=r(i,"undefined")?!1:i,!r(o,"undefined")){var f=c(e,o);if(!r(f,"undefined"))return f}for(var u,d,g,m,v,h=["modernizr","tspan","samp"];!k.style&&h.length;)u=!0,k.modElem=a(h.shift()),k.style=k.modElem.style;for(g=e.length,d=0;g>d;d++)if(m=e[d],v=k.style[m],s(m,"-")&&(m=p(m)),k.style[m]!==n){if(i||r(o,"undefined"))return l(),"pfx"==t?m:!0;try{k.style[m]=o}catch(y){}if(k.style[m]!=v)return l(),"pfx"==t?m:!0}return l(),!1}function m(e,t){return function(){return e.apply(t,arguments)}}function v(e,t,n){var o;for(var i in e)if(e[i]in t)return n===!1?e[i]:(o=t[e[i]],r(o,"function")?m(o,n||t):o);return!1}function h(e,t,n,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+T.join(s+" ")+s).split(" ");return r(t,"string")||r(t,"undefined")?g(a,t,o,i):(a=(e+" "+P.join(s+" ")+s).split(" "),v(a,t,n))}function y(e,t,r){return h(e,n,n,t,r)}var x=[],b={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var n=this;setTimeout(function(){t(n[e])},0)},addTest:function(e,t,n){x.push({name:e,fn:t,options:n})},addAsyncTest:function(e){x.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=b,Modernizr=new Modernizr;var C=[],w=t.documentElement,S="svg"===w.nodeName.toLowerCase(),_="Moz O ms Webkit",T=b._config.usePrefixes?_.split(" "):[];b._cssomPrefixes=T;var O={elem:a("modernizr")};Modernizr._q.push(function(){delete O.elem});var k={style:O.elem.style};Modernizr._q.unshift(function(){delete k.style});var P=b._config.usePrefixes?_.toLowerCase().split(" "):[];b._domPrefixes=P,b.testAllProps=h;var z=function(t){var r,o=E.length,i=e.CSSRule;if("undefined"==typeof i)return n;if(!t)return!1;if(t=t.replace(/^@/,""),r=t.replace(/-/g,"_").toUpperCase()+"_RULE",r in i)return"@"+t;for(var s=0;o>s;s++){var a=E[s],l=a.toUpperCase()+"_"+r;if(l in i)return"@-"+a.toLowerCase()+"-"+t}return!1};b.atRule=z;var A=b.prefixed=function(e,t,n){return 0===e.indexOf("@")?z(e):(-1!=e.indexOf("-")&&(e=p(e)),t?h(e,t,n):h(e,"pfx"))};b.testAllProps=y,Modernizr.addTest("flexbox",y("flexBasis","1px",!0)),Modernizr.addTest("flexboxlegacy",y("boxDirection","reverse",!0)),Modernizr.addTest("flexboxtweener",y("flexAlign","end",!0)),Modernizr.addTest("flexwrap",y("flexWrap","wrap",!0));var E=b._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):["",""];b._prefixes=E,Modernizr.addTest("cssgradients",function(){for(var e,t="background-image:",n="gradient(linear,left top,right bottom,from(#9f9),to(white));",r="",o=0,i=E.length-1;i>o;o++)e=0===o?"to ":"",r+=t+E[o]+"linear-gradient("+e+"left top, #9f9, white);";Modernizr._config.usePrefixes&&(r+=t+"-webkit-"+n);var s=a("a"),l=s.style;return l.cssText=r,(""+l.backgroundImage).indexOf("gradient")>-1}),Modernizr.addTest("objectfit",!!A("objectFit"),{aliases:["object-fit"]}),Modernizr.addTest("csspositionsticky",function(){var e="position:",t="sticky",n=a("a"),r=n.style;return r.cssText=e+E.join(t+";"+e).slice(0,-e.length),-1!==r.position.indexOf(t)}),Modernizr.addTest("rgba",function(){var e=a("a").style;return e.cssText="background-color:rgba(150,255,150,.5)",(""+e.backgroundColor).indexOf("rgba")>-1}),Modernizr.addTest("csstransforms",function(){return-1===navigator.userAgent.indexOf("Android 2.")&&y("transform","scale(1)",!0)}),Modernizr.addTest("csstransitions",y("transition","all",!0)),Modernizr.addTest("history",function(){var t=navigator.userAgent;return-1===t.indexOf("Android 2.")&&-1===t.indexOf("Android 4.0")||-1===t.indexOf("Mobile Safari")||-1!==t.indexOf("Chrome")||-1!==t.indexOf("Windows Phone")||"file:"===location.protocol?e.history&&"pushState"in e.history:!1});var j=a("input"),L="autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),N={};Modernizr.input=function(t){for(var n=0,r=t.length;r>n;n++)N[t[n]]=!!(t[n]in j);return N.list&&(N.list=!(!a("datalist")||!e.HTMLDataListElement)),N}(L),Modernizr.addTest("localstorage",function(){var e="modernizr";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(t){return!1}}),o(),i(C),delete b.addTest,delete b.addAsyncTest;for(var q=0;q<Modernizr._q.length;q++)Modernizr._q[q]();e.Modernizr=Modernizr}(window,document);
+
+//]]>
+</script><link rel="stylesheet" media="screen" href="./Creating a Secure REST API in Node.js _ Toptal_files/public_blog_post_styles.f74bbeb3c7e35df7be930dcecdc31218.css"><script>(function(w,d,s,l,i,k){
+  w[l]=w[l]||[];
+  w[l].push({
+    'gtm.start': new Date().getTime(),
+    event:'gtm.js'
+  });
+  var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),
+      dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+k;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K4WD79L','');</script><script>var _rollbarConfig = {
+  accessToken: "572775c0ea0f4c7ebad139fc88eaafa8",
+  captureUncaught: true,
+  async: true,
+  captureUnhandledRejections: true,
+  payload: {
+    environment: "production",
+    client: {
+      javascript: {
+        code_version: "a068413c411cfcf5ef3326d5630d4445d8d18846",
+        source_map_enabled: true
+      }
+    }
+  }
+};
+!function(r){function e(n){if(o[n])return o[n].exports;var t=o[n]={exports:{},id:n,loaded:!1};return r[n].call(t.exports,t,t.exports,e),t.loaded=!0,t.exports}var o={};return e.m=r,e.c=o,e.p="",e(0)}([function(r,e,o){"use strict";var n=o(1),t=o(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.3.8/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";function n(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}function t(r,e){this.options=r,this._rollbarOldOnError=null;var o=s++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}function a(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var t=new p(e);return n(function(){e.captureUncaught&&(t._rollbarOldOnError=r.onerror,i.captureUncaughtExceptions(r,t,!0),i.wrapGlobals(r,t,!0)),e.captureUnhandledRejections&&i.captureUnhandledRejections(r,t,!0);var n=e.autoInstrument;return e.enabled!==!1&&(void 0===n||n===!0||"object"==typeof n&&n.network)&&r.addEventListener&&(r.addEventListener("load",t.captureLoad.bind(t)),r.addEventListener("DOMContentLoaded",t.captureDomContentLoaded.bind(t))),r[o]=t,t})()}}function l(r){return n(function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)})}var i=o(2),s=0,d=o(3),c=function(r,e){return new t(r,e)},p=d.bind(null,c);t.prototype.loadFull=function(r,e,o,t,a){var l=function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,t,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(t=n.args||[],i=0;i<t.length;++i)if(l=t[i],"function"==typeof l){l(e);break}}"function"==typeof a&&a(e)},i=!1,s=e.createElement("script"),d=e.getElementsByTagName("script")[0],c=d.parentNode;s.crossOrigin="",s.src=t.rollbarJsUrl,o||(s.async=!0),s.onload=s.onreadystatechange=n(function(){if(!(i||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{c.removeChild(s)}catch(r){}i=!0,l()}}),c.insertBefore(s,d)},t.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw"string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e,e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)t.prototype[u[f]]=l(u[f]);r.exports={setupShim:a,Rollbar:p}},function(r,e){"use strict";function o(r,e,o){if(r){var t;"function"==typeof e._rollbarOldOnError?t=e._rollbarOldOnError:r.onerror&&!r.onerror.belongsToShim&&(t=r.onerror,e._rollbarOldOnError=t);var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};a.belongsToShim=o,r.onerror=a}}function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),e.handleUncaughtException.apply(e,n),o&&o.apply(r,n)}function t(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){t="[unhandledrejection] error getting `detail` from event"}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}function a(r,e,o){if(r){var n,t,a="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(n=0;n<a.length;++n)t=a[n],r[t]&&r[t].prototype&&l(e,r[t].prototype,o)}}function l(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports={captureUncaughtExceptions:o,captureUnhandledRejections:t,wrapGlobals:a}},function(r,e){"use strict";function o(r,e){this.impl=r(e,this),this.options=e,n(o.prototype)}function n(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}o.prototype._swapAndProcessMessages=function(r,e){this.impl=r(this.options);for(var o,n,t;o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=o},function(r,e){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){r=r||{};for(var o,n,t=r.globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script><script>if(!window.appinfo) {
+  (function () {
+    // Setup handlers
+    var result;
+    var done = false;
+    var thens = [];
+    window.onAppInfoLoaded = {
+      then: function(callback) {
+        done ? callback(result) : thens.push(callback)
+        return this
+      }
+    };
+
+    function resolve() {
+      thens.forEach(function(callback) { callback(result) });
+    }
+
+    // Scrips callback, appinfo calls it internally
+    window.onAppinfoLoad = function() {
+      window.appinfo.grab('https://appinfo.toptal.com', {
+        data: gon['application_info_data'] || {},
+        withCredentials: false,
+        callback: function(response, error) {
+          done = true;
+          if (!error) {
+            result = {applicationInfo: response.data};
+          }
+          resolve();
+        }
+      })
+    };
+
+    // Load script
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onerror = function() {
+      done = true;
+      resolve();
+    }
+    script.src = 'https://appinfo.toptal.com/script.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
+  })();
+}</script><script type="text/javascript" src="./Creating a Secure REST API in Node.js _ Toptal_files/script.js"></script><script type="text/javascript" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/embed.js"></script><script type="text/javascript" charset="utf-8" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/37.259572ee69027e92d3ed.js"></script><script type="text/javascript" charset="utf-8" async="" src="./Creating a Secure REST API in Node.js _ Toptal_files/36.5620a054eaa8343599f7.js"></script><link rel="stylesheet" href="blob:https://www.toptal.com/edbee76c-4df3-475d-8650-3979217fc9e3"><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.cec9997733d6bb700d05e240f04d2fd3.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.4f78a44956523083e2be1589c3559f2b.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.762e74cb517821bba7954d44b1633501.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script src="./Creating a Secure REST API in Node.js _ Toptal_files/f(1).txt"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/f(2).txt"></script></head><body><div class="notifications" data-cell="Notifications" data-cell-i-d="1"></div><div class="modal" data-cell="SubscribeModal" data-cell-i-d="2"><div class="modal_overlay"><button class="modal-icon_close" data-role="subscribe-modal-close">close</button><div class="modal_content"><div class="modal_content-header"><svg height="32" viewBox="0 0 28 32" width="28" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="nonzero"><path d="m5.91801291 18.9813235 7.93838999-8.0317353 1.63583 1.6546471-7.94039634 8.0303823zm15.66812139-5.6356765-13.19163798-13.34270582-2.66775381 2.69844118 4.94627909 5.00317647-10.6730216 10.79511767 13.1909692 13.3433823 2.6677538-2.6984411-4.946279-5.0058823z"></path><path d="m27.6982374 3.29411764v-3.29411764h-.6623496l-.9858227 2.39572192-.9858227-2.39572192h-.6623494v3.29411764h.4312973v-2.72513368l1.1552609 2.72513368h.1232279l1.1552608-2.72513368v2.72513368zm-3.7907961-2.90481283v-.38930481h-2.3074413v.38930481h.9411931v2.90481283h.4250549v-2.90481283z"></path></g></svg></div><div class="subscribe_card" data-cell="SubscribeForm" data-placement="bounce_modal" data-cell-i-d="3"><div class="subscribe_card-inner"><p class="subscribe_card-title">World-class articles, delivered weekly.</p><div class="subscribe_card-content"><form action="https://www.toptal.com/blog/subscription" class="subscribe_card-form" data-recaptcha="invisible" method="post"><input class="subscribe_card-input" name="blog_subscription[email]" placeholder="Enter your email" role="subscribe_email" type="text"><input name="blog_subscription[vertical]" type="hidden"><div class="recaptcha-container" role="recaptcha-container"><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;"><div class="grecaptcha-logo"><iframe src="./Creating a Secure REST API in Node.js _ Toptal_files/anchor.html" width="256" height="60" role="presentation" name="a-sv80ur7x0xr1" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><button name="button" type="submit" class="form_button is-highlight">Sign Me Up</button></form><p class="subscribe_card-disclaimer">Subscription implies consent to our <a href="https://www.toptal.com/privacy">privacy policy</a></p></div></div><div class="subscribe_card-post_roll"><span class="checkmark"></span><p class="subscribe_card-post_roll_text">Thank you!<br>Check out your inbox to confirm your invite.</p></div><button aria-label="Close" class="subscribe_card-hide" data-role="subscribe_section.hide"></button></div><button class="modal_content-close_text" data-role="subscribe-modal-close">Not right now, thanks.</button></div></div></div><div class="blog_post-wrapper" data-cell="ArticleScroll" data-role="blog_post.wrapper" data-cell-i-d="4" style="padding-top: 64px"><div class="navbar is-scrolling is-transitioning is-visible" data-cell="Navbar" data-role="navbar" data-cell-i-d="5"><div class="section has-standard_width"><div class="section-inner"><div class="navbar-inner"><div class="navbar-logo_wrapper is-emblem"><a class="navbar-logo" href="https://www.toptal.com/developers"><span class="navbar-logo_emblem"><svg height="32" viewBox="0 0 28 32" width="28" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="nonzero"><path d="m5.91801291 18.9813235 7.93838999-8.0317353 1.63583 1.6546471-7.94039634 8.0303823zm15.66812139-5.6356765-13.19163798-13.34270582-2.66775381 2.69844118 4.94627909 5.00317647-10.6730216 10.79511767 13.1909692 13.3433823 2.6677538-2.6984411-4.946279-5.0058823z"></path><path d="m27.6982374 3.29411764v-3.29411764h-.6623496l-.9858227 2.39572192-.9858227-2.39572192h-.6623494v3.29411764h.4312973v-2.72513368l1.1552609 2.72513368h.1232279l1.1552608-2.72513368v2.72513368zm-3.7907961-2.90481283v-.38930481h-2.3074413v.38930481h.9411931v2.90481283h.4250549v-2.90481283z"></path></g></svg></span><span class="navbar-logo_wordmark"><svg height="32" viewBox="0 0 108 32" width="108" xmlns="http://www.w3.org/2000/svg"><path d="m5.95677289 18.9814054 7.99086731-8.0317838 1.6465752 1.6547027-7.99260991 8.0302703-1.64461477-1.6531892zm15.77087531-5.6356757-13.27803142-13.34270267-2.68518757 2.69837838 4.97871719 5.00324324-10.7431464 10.79481085 13.2775958 13.3433513 2.6851876-2.6983784-4.9787172-5.0058378 10.7437999-10.7930811zm9.153207-9.46681078v4.08821622h4.4186769v2.36086486h-4.4186769v9.1971892c0 2.1152432.5957644 3.3132973 2.3142235 3.3132973.8414764 0 1.3331182-.0709189 1.788818-.211027l.1398467 2.361081c-.5957644.2108109-1.5428882.4227027-2.7350705.4227027-1.4376765 0-2.5950061-.4944864-3.3314886-1.3042162-.8414764-.9513513-1.1921823-2.4665946-1.1921823-4.4763243v-9.3027027h-2.6307301v-2.36108108h2.6307301v-3.17189189l3.0158532-.91589189zm7.5878822 12.65081078c0 3.7362162 2.1035821 6.5543784 5.1200887 6.5543784 2.9459298 0 5.1551594-2.7835676 5.1551594-6.6248649 0-2.8897297-1.4385478-6.51891888-5.0850182-6.51891888-3.6122711 0-5.1902299 3.38291888-5.1902299 6.58940538zm13.430948-.1757838c0 6.3074595-4.3836063 9.0572973-8.4509238 9.0572973-4.5591771 0-8.1359419-3.3837837-8.1359419-8.7751351 0-5.6735135 3.7523356-9.02162161 8.4169423-9.02162161 4.8735054 0 8.1699234 3.55891891 8.1699234 8.73945941zm4.5870593 1.726919c0 .4588108.0348527.8815135.140718 1.2685405.5613473 2.1498378 2.4185639 3.6291892 4.6293183 3.6291892 3.2602581 0 5.1538523-2.6780541 5.1538523-6.5894054 0-3.3831351-1.7879467-6.3081081-5.0488584-6.3081081-2.1048891 0-4.1034772 1.4806486-4.6650423 3.8058378-.104994.3874595-.2099879.8462703-.2099879 1.2330811zm-3.050706-4.5457298c0-2.185081-.0707946-3.94724321-.1400645-5.56799996h2.7344171l.1764421 2.92432436h.0692699c1.2279064-2.07891896 3.2620008-3.27697301 6.032142-3.27697301 4.1378943 0 7.2238886 3.48864861 7.2238886 8.63329731 0 6.1321081-3.7529891 9.1632432-7.7495119 9.1632432-2.2445179 0-4.208689-.9868108-5.2266075-2.678054h-.0692698v9.267027h-3.050706zm21.9868657-9.65621618v4.08821622h4.4180234v2.36086486h-4.4180234v9.1971892c0 2.1152432.5957644 3.3132973 2.3144413 3.3132973.8414764 0 1.3313756-.0709189 1.7879468-.211027l.1405002 2.361081c-.5968536.2108109-1.5435418.4227027-2.7357241.4227027-1.4372408 0-2.5943526-.4944864-3.3306172-1.3042162-.8423477-.9513513-1.1924002-2.4665946-1.1924002-4.4763243v-9.3027027h-2.6307301v-2.36108108h2.6307301v-3.17189189l3.0158532-.91589189zm15.4855184 12.43978378c-3.3672126-.0709189-7.1888181.5284324-7.1888181 3.8417297 0 2.0430271 1.3315934 2.9595676 2.8753529 2.9595676 2.2440823 0 3.6826301-1.4097297 4.1727471-2.8540541.1056475-.3524324.1407181-.7055135.1407181-.987027v-2.96zm2.9807825 4.6162162c0 1.4808649.0699234 2.9251892.244405 4.088h-2.7701412l-.244405-2.1498378h-.1049939c-.9484308 1.3394594-2.7707947 2.5381621-5.1908834 2.5381621-3.437136 0-5.1893586-2.4326486-5.1893586-4.899027 0-4.1232432 3.6473416-6.3783784 10.2040177-6.3433513v-.3517838c0-1.3751352-.385123-3.94724326-3.8579831-3.91200002-1.6130294 0-3.2602581.45794592-4.4530939 1.26832432l-.7007584-2.0787027c1.4015167-.88151351 3.4708995-1.48021621 5.6102057-1.48021621 5.1908834 0 6.4529891 3.55891891 6.4529891 6.94205401zm2.286777 4.088h3.0857765v-25.01989187h-3.0857765zm11.0502867-22.10399998c0 1.61081081-1.303929 2.91891892-2.940702 2.91891892-1.622832 0-2.940702-1.30810811-2.940702-2.91891892 0-1.62464865 1.31787-2.91891892 2.940702-2.91891892 1.636773 0 2.940702 1.29427027 2.940702 2.91891892zm-.485543 0c0-1.36302703-1.095684-2.43697297-2.455159-2.43697297-1.359258 0-2.45516 1.07394594-2.45516 2.43697297 0 1.33556757 1.095684 2.43697297 2.454942 2.43697297 1.359476 0 2.455377-1.1014054 2.455377-2.43697297zm-1.040355 1.67978378h-.624082l-.873933-1.32172973h-.541089v1.32172973h-.513207v-3.34572973h1.373199c.568753 0 1.137507.39935135 1.137507 1.01881081 0 .74356757-.665688.99135136-.859992.99135136l.901815 1.33556756zm-.568536-2.32691892c0-.37189189-.31912-.592-.610576-.592h-.859992v1.15654054h.859992c.291456 0 .610359-.22032432.610359-.56432432z" fill="currentColor" fill-rule="evenodd"></path></svg></span><span class="navbar-title">Developers</span></a></div><span class="navbar-headline" data-ga-arguments="[&quot;ClickedOnHeaderHeadline&quot;]" data-ga-call="trackBlogAction" data-ga-listen="click">Hiring? Toptal handpicks <a href="https://www.toptal.com/nodejs">top Node.js developers</a> to suit your needs.</span><ul class="navbar-navigation"><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/top-3-percent">Top 3%</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/why">Why</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/clients">Clients</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/enterprise">Enterprise</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/community">Community</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/blog">Blog</a></li><li class="navbar-navigation_item"><a class="navbar-navigation_item_link " href="https://www.toptal.com/about">About Us</a></li></ul><button class="navbar-toggle" type="button"><svg class="expand_icon" role="img" viewBox="0 0 24 19"><path class="expand_icon-path is-top" d="M1.5,0h21C23.3,0,24,0.7,24,1.5S23.3,3,22.5,3h-21C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0z" fill="currentColor"></path><path class="expand_icon-path is-left" d="M1.5,8h21C23.3,8,24,8.7,24,9.5S23.3,11,22.5,11h-21C0.7,11,0,10.3,0,9.5S0.7,8,1.5,8z" fill="currentColor"></path><path class="expand_icon-path is-right" d="M1.5,8h21C23.3,8,24,8.7,24,9.5S23.3,11,22.5,11h-21C0.7,11,0,10.3,0,9.5S0.7,8,1.5,8z" fill="currentColor"></path><path class="expand_icon-path is-bottom" d="M1.5,16h21c0.8,0,1.5,0.7,1.5,1.5S23.3,19,22.5,19h-21C0.7,19,0,18.3,0,17.5S0.7,16,1.5,16z" fill="currentColor"></path><style type="text/css">.expand_icon-path {
+  transform: rotate(0);
+  transform-origin: 50% 50%;
+  transition: transform .2s ease-in;
+}
+
+.expand_icon-path.is-bottom,
+.expand_icon-path.is-top {
+  transform: scale(1);
+}
+
+.expand_icon.is-expanded .expand_icon-path.is-bottom,
+.expand_icon.is-expanded .expand_icon-path.is-top {
+  transform: scale(0);
+}
+
+.expand_icon.is-expanded .expand_icon-path.is-left {
+  transform: rotate(45deg);
+}
+
+.expand_icon.is-expanded .expand_icon-path.is-right {
+  transform: rotate(-45deg);
+}</style></svg></button><ul class="navbar-actions"><li class="navbar-action is-sticky is-visible" data-role="show_for_logged_out"><a href="https://www.toptal.com/nodejs" class="button is-highlight">Start Hiring</a></li><li class="navbar-action is-sticky is-visible" data-role="show_for_logged_out"><a class="navbar-action_link" href="https://www.toptal.com/users/login">Log In</a></li><li class="navbar-action is-sticky" data-role="show_for_logged_in"><a class="navbar-action_link" href="https://www.toptal.com/secure_redirect/default">Go to Your Profile</a></li></ul></div></div></div><progress class="navbar-reading_progress" data-role="navbar.reading_progress" max="100" value="45.27912282173686"></progress></div><div class="blog_menu" data-cell="BlogMenu" data-cell-i-d="6"><div class="blog_menu-inner_wrapper"><div class="blog_menu-inner"><div class="blog_menu-inner_row has_search"><a class="blog_menu-dropdown has-theme-default" data-role="dropdown-trigger" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs"><span class="blog_menu-dropdown_closed">Engineering</span><span class="blog_menu-dropdown_opened">All Blogs</span><div class="blog_menu-dropdown_icon"><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg></div></a><div class="blog_menu-search_trigger" data-role="search-trigger"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M 9 3 C 5.6759952 3 3 5.6759952 3 9 C 3 12.324005 5.6759952 15 9 15 C 10.481205 15 11.830584 14.465318 12.875 13.582031 L 18.292969 19 L 19 18.292969 L 13.582031 12.875 C 14.465318 11.830584 15 10.481205 15 9 C 15 5.6759952 12.324005 3 9 3 z M 9 4 C 11.770005 4 14 6.2299952 14 9 C 14 11.770005 11.770005 14 9 14 C 6.2299952 14 4 11.770005 4 9 C 4 6.2299952 6.2299952 4 9 4 z " fill="currentColor"></path></svg></div><form action="https://www.toptal.com/blog/search" class="search is-gray blog_menu-search" data-action="/blog/search.json" data-cell="Search" data-cell-i-d="7"><div class="search-input_wrapper"><input autocomplete="off" class="search-input" data-role="search-input" name="term" placeholder="What are you looking for?"><div class="search-icon_search"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M 9 3 C 5.6759952 3 3 5.6759952 3 9 C 3 12.324005 5.6759952 15 9 15 C 10.481205 15 11.830584 14.465318 12.875 13.582031 L 18.292969 19 L 19 18.292969 L 13.582031 12.875 C 14.465318 11.830584 15 10.481205 15 9 C 15 5.6759952 12.324005 3 9 3 z M 9 4 C 11.770005 4 14 6.2299952 14 9 C 14 11.770005 11.770005 14 9 14 C 6.2299952 14 4 11.770005 4 9 C 4 6.2299952 6.2299952 4 9 4 z " fill="currentColor"></path></svg></div><button class="search-icon_close" data-role="search-close" type="button"><svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><title>Icon Close</title><g fill="transparent" stroke="currentColor"><path d="M.75.75l16.5 16.5M17.25.75L.75 17.25"></path></g></svg></button><button class="search-submit" data-role="search-submit" type="submit">Search</button></div><div class="search-popup" data-role="popup"><div class="search-filters_wrapper"><div class="search-filters_title">Filter by</div><div class="search-filters"><label class="search-filter_item is-checked" data-role="filter-item"><input checked="checked" name="filter" type="radio" value="">All</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="developers">Engineering</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="designers">Design</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="finance_experts">Finance</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="project_managers">Projects</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="product_managers">Product</label><label class="search-filter_item" data-role="filter-item"><input name="filter" type="radio" value="insights">Toptal Insights</label></div></div><div class="search-results"><span class="search-results_title" data-role="search-results-title"></span><div class="search-results_container" data-role="search-results-container"></div></div><div class="search-initial_results" data-role="search-initial-results"></div><div class="search-view_all_wrapper"><button class="search-view_all" data-role="search-view-all" type="submit">View all results</button></div></div><script data-role="search-results-item-template" type="text/template"><a class="search-results_item" data-role="search-results-item" href="${url}"><span class="search-results_item_title">${title}</span><span class="search-results_item_label">${label}</span></a></script></form></div><div class="blog_menu-inner_row blog_menu-categories"><div class="grid has-3_columns_on_desktop has-2_columns_on_tablet-xl has-0_column_gap has-0_row_gap_on_desktop has-0_row_gap_on_tablet-xl"><div class="grid-item"><div class="domain_card is-minimal"><a class="domain_card-inner" href="https://www.toptal.com/developers/blog"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/engineering-146168ba63ad8d24c415ceb21fb0d5d7.svg" class="deferred_image is-loaded" alt="developers"></div><div class="domain_card-title">Engineering</div></a></div></div><div class="grid-item"><div class="domain_card is-minimal"><a class="domain_card-inner" href="https://www.toptal.com/designers/blog"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/design-0b825816c47b2bfe1038febc7c35d988.svg" class="deferred_image is-loaded" alt="designers"></div><div class="domain_card-title">Design</div></a></div></div><div class="grid-item"><div class="domain_card is-minimal"><a class="domain_card-inner" href="https://www.toptal.com/finance/blog"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/finance-6ce5d02055ffb2963d43de69b4eeda1d.svg" class="deferred_image is-loaded" alt="finance_experts"></div><div class="domain_card-title">Finance</div></a></div></div><div class="grid-item"><div class="domain_card is-minimal"><a class="domain_card-inner" href="https://www.toptal.com/project-managers/blog"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/projects-66deb60b219896816b43bcec142c7a12.svg" class="deferred_image is-loaded" alt="project_managers"></div><div class="domain_card-title">Projects</div></a></div></div><div class="grid-item"><div class="domain_card is-minimal"><a class="domain_card-inner" href="https://www.toptal.com/product-managers/blog"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/products-73025514deb4b12e780e3c3d639c5bc2.svg" class="deferred_image is-loaded" alt="product_managers"></div><div class="domain_card-title">Product</div></a></div></div><div class="grid-item"><div class="domain_card is-minimal is-highlight"><a class="domain_card-inner" href="https://www.toptal.com/insights"><div class="domain_card-icon"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/insights-3a2ed43a337ac057be7cf3752e3d9c82.svg" class="deferred_image is-loaded" alt="insights"></div><div class="domain_card-title">Toptal Insights</div></a></div></div></div></div></div></div></div><article class="blog_post-article_wrapper"><div class="section has-full_size_width"><div class="section-inner"><div class="article_hero" data-cell="ArticleHero" data-cell-i-d="14"><div class="article_hero-inner" data-position-from="top-top" data-position-to="bottom-top" data-role="article_hero.animate" data-var-from="-150px" data-var-prop="--margin-bottom" data-var-to="0" style="--margin-bottom:0px;"><span class="article_hero-img" data-position-from="top-top" data-position-to="bottom-top" data-role="article_hero.animate" data-var-from="0" data-var-prop="--ty" data-var-to="-100px" style="background-image: url(&quot;https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/15922/cover-secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png&quot;); --ty:-100px;"></span><span class="article_hero-overlay" data-position-from="top-top" data-position-to="middle-top" data-role="article_hero.animate" data-var-from="0" data-var-prop="--opacity" data-var-to=".5" style="--opacity:0.5;"></span></div></div><div class="article_wrapper" data-role="article_hero.wrapper"><div class="article_bio"><div class="article_bio-info"><div class="article_bio-breadcrumb"><a class="article_bio-breadcrumb-link" href="https://www.toptal.com/developers/blog/technology">Technology</a></div><div class="article_bio-reading_time">13 minute read</div></div><h1 class="article_bio-title">Creating a Secure REST API in Node.js</h1></div><div class="author_short_bio"><div class="author_short_bio-author_container"><div class="author_short_bio-author_photo_content"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/small_aae33a693e6c00a964ccb332f61a3fe2.jpeg" class="author_short_bio-author_photo is-loaded" alt="Marcos Henrique da Silva"></div><div class="author_short_bio-text-container"><div class="author_short_bio-name"><a class="author_short_bio-name_link" target="_blank" href="https://www.toptal.com/resume/marcos-henrique-da-silva">Marcos Henrique da Silva</a></div><div class="author_short_bio-short-bio">Marcos has 15+ years in IT and development. His passions include REST architecture, Agile development methodology, and JS.</div></div></div><div class="author_short_bio-content_wrapper"><div class="author_short_bio-content_inner"><div class="social_share is-open" data-cell="SocialShare" data-hashtags="JavaScript,Node.js,Express,REST" data-rss-url="" data-title="Creating a Secure REST API in Node.js" data-url="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs" data-cell-i-d="16"><div class="social_share-inner"><div class="social_share-counter is-visible" data-role="social_share.counter_wrapper"><strong class="social_share-counter_number" data-role="counter">129</strong><span class="social_share-counter_noun" data-role="counter_noun">shares</span></div><div class="social_share-button" data-role="toggle"><svg height="17" width="16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="13.5" cy="2.5" fill="currentColor" r="2.5"></circle><circle cx="13.5" cy="14.5" fill="currentColor" r="2.5"></circle><circle cx="2.5" cy="8.5" fill="currentColor" r="2.5"></circle><path d="M2.5 8.5l11-6M2.5 8.5l11 6" stroke="currentColor"></path></g></svg><span class="social_share-button_text">SHARE</span></div><ul class="social_share-social_channels_list"><li class="social_share-social_channel"><a class="social_channel twitter-icon" title="Twitter" data-role="social_channel" data-type="twitter" data-track-click="SocialShareButtonClicked" data-track-default-data="{&quot;network&quot;:&quot;twitter&quot;}" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs#"><svg height="14" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M16 2h-2l2-1h-3a3 3 0 0 0-5 3C5 4 3 3 1 1v2l1 2H1c0 2 1 3 2 3a3 3 0 0 1-1 0c0 2 1 3 3 3a7 7 0 0 1-5 1l5 1c6 0 9-5 9-9l2-2z" fill="currentColor" fill-rule="evenodd"></path></svg></a></li><li class="social_share-social_channel"><a class="social_channel facebook-icon" title="Facebook" data-role="social_channel" data-type="facebook" data-track-click="SocialShareButtonClicked" data-track-default-data="{&quot;network&quot;:&quot;facebook&quot;}" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs#"><svg height="16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M9 0H7C5 0 3 1 3 4v2H1v3h2v7h3V9h3V6H6V4l2-1h1V0z" fill="currentColor" fill-rule="evenodd"></path></svg></a></li><li class="social_share-social_channel"><a class="social_channel linkedin-icon" title="Linkedin" data-role="social_channel" data-type="linkedin" data-track-click="SocialShareButtonClicked" data-track-default-data="{&quot;network&quot;:&quot;linkedin&quot;}" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs#"><svg height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M3.635417 5.546131h-3.4375v10.322917h3.4375V5.54613zm.21875-3.1875C3.84375 1.348214 3.114583.577381 1.9375.577381.770833.577381 0 1.348214 0 2.358631c0 .989583.739583 1.78125 1.895833 1.78125h.020834c1.197916 0 1.947916-.791667 1.9375-1.78125zm5.104166 4.654741V5.546131H5.53125s.041667.96875 0 10.322917h3.427083V10.10863c0-.3125.03125-.614583.114584-.84375.25-.614583.8125-1.25 1.760416-1.25 1.239584 0 1.739584.947917 1.739584 2.333333v5.520834H16V9.95238c0-3.166667-1.6875-4.645833-3.947917-4.645833-1.825777 0-2.641541.999912-3.09375 1.706824z" fill="currentColor" fill-rule="evenodd"></path></svg></a></li><li class="social_share-social_channel"><a class="social_channel pocket-icon" title="Pocket" data-role="social_channel" data-type="pocket" data-track-click="SocialShareButtonClicked" data-track-default-data="{&quot;network&quot;:&quot;pocket&quot;}" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs#"><svg height="14" width="16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="nonzero"><path d="M7.774936 13.913044C3.478261 13.913044 0 10.434783 0 6.138107V1.185882C0 .53238.53197 0 1.185882 0H14.36399c.653504 0 1.185882.53197 1.185882 1.185882v4.952225c0 4.296676-3.47826 7.774937-7.774936 7.774937z" fill="currentColor"></path><path d="M7.774936 9.820972c-.246343 0-.53197-.081842-.736573-.286445L3.150895 5.647059c-.409207-.409207-.409207-1.063939 0-1.432225.409207-.409207 1.063939-.409207 1.432225 0l3.191816 3.150895 3.150895-3.150895c.409207-.409207 1.063939-.409207 1.432225 0 .409207.409207.409207 1.06312 0 1.432225L8.470588 9.534527c-.163683.204603-.44931.286445-.695652.286445z" fill="#FFF"></path></g></svg></a></li></ul></div></div></div></div></div></div></div></div><div class="section has-standard_width has-medium_padding"><div class="section-inner"><div class="blog_post-main_content"><main class="blog_post-body" data-role="navbar.progress_source"><div class="blog_post_body" data-cell="BlogPostBody" data-cell-i-d="17"><p>Consider all the software that you use in your life. It doesn’t matter if you’re a developer or a regular user that just casually browses the internet and checks up on social networks. Almost all software that you can identify uses some form of API.</p>
+
+<p>APIs (application programming interfaces) enable software applications to communicate with other pieces of software consistently. Either internally to connect to a component of the application or externally to connect to a service.</p>
+
+<p>Using API-based components and services in development is also a great way of maintaining scalability and productivity as it enables you to develop multiple applications based off of modular and reusable components, allowing scalability and facilitating maintenance.</p>
+
+<p>We should also take into account that multiple online services have front-facing APIs and that you can use them to easily integrate things like social media logins, credit card payments, behavior tracking, and many other functionalities.</p>
+
+<p>Implementing such a variety of services via their APIs can be greatly facilitated by using a common platform for communication, a standardized protocol shared and supported by all of them. We’ll be using REST for that.</p>
+
+<p>REST stands for REpresentational State Transfer and is used to access and manipulate data using several stateless operations. These operations are integral to the HTTP protocol and represent an essential CRUD functionality (Create, Read, Update, Delete).</p>
+
+<p>The HTTP operations available are:</p>
+
+<ul>
+  <li>POST (create a resource or generally provide data)</li>
+  <li>GET (retrieve an index of resources or an individual resource)</li>
+  <li>PUT (create or replace a resource)</li>
+  <li>PATCH (update/modify a resource)</li>
+  <li>DELETE (remove a resource)</li>
+</ul>
+
+<p>Using the above-listed operations and a resource name as an address, we can build a REST API by basically creating an endpoint for each operation. And by implementing the pattern, we will have a stable and easily understandable foundation enabling us to evolve the code rapidly and maintain it afterward. As mentioned before, the same foundation will be used to integrate third-party features, most of which likewise use REST APIs, making such integration faster.</p>
+
+<p>While a multitude of platforms and programming languages can be used to build a REST API, in this article, we will be focusing on Node.js.</p>
+
+<p>Node.js is a JavaScript runtime environment that runs server-side. Within that environment, we can use JavaScript to build our software, our REST APIs, and invoke external services through their APIs. This fact is especially convenient for developers who are crossing over from front-end development as they should already be familiar with JavaScript, making the transition more natural. It also has the bonus of unifying all of the codebase under a single programming language.</p>
+
+<p>As an infrastructure, Node.js is designed for building scalable network applications. It is also relatively simple to set up on a local machine, and you can have your server running with a few lines of code. Even some cloud services such as AWS (Amazon Web Services) run Node.js, enabling you to run a serverless application.</p>
+
+<p>Now, of course, nothing is quite so clear-cut in the real world, and development communities are always ripe with discussions about which programming language is the best and which environment is the most suitable for a specific purpose, but I’ll leave that up to you. If you’re curious, though, you can also find articles on REST APIs in <a href="https://www.toptal.com/asp-dot-net/asp-net-web-api-tutorial">ASP.NET Core</a>, <a href="https://www.toptal.com/laravel/restful-laravel-api-tutorial">Laravel (PHP)</a>, <a href="https://www.toptal.com/bottle/building-a-rest-api-with-bottle-framework">Bottle (Python)</a>, and many others.</p>
+
+<p>For now, let’s start creating our secure REST API using Node.js!</p>
+
+<p>In this tutorial, we are going to create a pretty common but practical REST API for a resource called <code>users</code>.</p>
+
+<p>Our resource will have the following basic structure:</p>
+
+<ul>
+  <li>id (an auto-generated UUID)</li>
+  <li>firstName</li>
+  <li>lastName</li>
+  <li>email</li>
+  <li>password</li>
+  <li>permissionLevel (used to control user’s permissions)</li>
+</ul>
+
+<p>And we will create the following operations for that resource:</p>
+
+<ul>
+  <li>[POST] endpoint/users</li>
+  <li>[GET] endpoint/users (list users)</li>
+  <li>[GET] endpoint/users/:userId (get specific user)</li>
+  <li>[PATCH] endpoint/users/:userId (update the data for the specified user)</li>
+  <li>[DELETE] endpoint/users/:userId (remove the specified user)</li>
+</ul>
+
+<p>We will also be using JWT (JSON Web Token) for access tokens, and to that end, we will create another resource called <code>auth</code> that will expect user email and password and in return will generate the token used for authentication on certain operations. If you are interested in knowing more about this, Dejan Milosevic wrote a great article on <a href="https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java">JWT for secure REST applications in Java</a> a while back; the principles are the same.</p>
+
+<div class="pop_out_box is-full_width is-big" style="text-align: center;"><strong>Related:  </strong><a href="https://www.toptal.com/nodejs/is-it-time-to-use-node-8">Is It Time to Use Node 8?
+</a></div>
+
+<h2 id="setup">Setup</h2>
+
+<p>First of all, make sure that you have the latest Node.js version installed. For this article, I’ll be using version 8.11.2 from <a href="https://nodejs.org/" rel="noopener noreferrer">nodejs.org</a>. Version 8 came with some neat improvements (you can read the more <a href="https://medium.com/the-node-js-collection/news-node-js-8-moves-into-long-term-support-and-node-js-9-becomes-the-new-current-release-line-74cf754a10a0" rel="noopener noreferrer">here</a> if you’re interested).</p>
+
+<p>Next, make sure that you have MongoDB installed, or install it from <a href="http://www.mongodb.com/" rel="noopener noreferrer">www.mongodb.com</a>.</p>
+
+<p>Create a folder that we’ll be using for our project and name it <code>simple-rest-api</code>.</p>
+
+<p>Open up a terminal (or a git CLI console) in that folder and run <code>npm init</code> to create the package.json file for the project.</p>
+
+<p>We’ll also be using <a href="https://expressjs.com/" rel="noopener noreferrer">Express</a> on this project. It is a decent Node.js framework with some built-in add-ons that’ll speed up our development.</p>
+
+<p>To keep the tutorial focused and on-topic, here’s the package.json with the appropriate dependencies.</p>
+
+<pre><code class="language-JSON hljs">{
+ <span class="hljs-attr">"name"</span>: <span class="hljs-string">"rest-api-tutorial"</span>,
+ <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+ <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+ <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,
+ <span class="hljs-attr">"scripts"</span>: {
+   <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+ },
+ <span class="hljs-attr">"repository"</span>: {
+   <span class="hljs-attr">"type"</span>: <span class="hljs-string">"git"</span>,
+   <span class="hljs-attr">"url"</span>: <span class="hljs-string">"git+https://github.com/makinhs/rest-api-tutorial.git"</span>
+ },
+ <span class="hljs-attr">"author"</span>: <span class="hljs-string">""</span>,
+ <span class="hljs-attr">"license"</span>: <span class="hljs-string">"ISC"</span>,
+ <span class="hljs-attr">"bugs"</span>: {
+   <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/makinhs/rest-api-tutorial/issues"</span>
+ },
+ <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://github.com/makinhs/rest-api-tutorial#readme"</span>,
+ <span class="hljs-attr">"dependencies"</span>: {
+   <span class="hljs-attr">"body-parser"</span>: <span class="hljs-string">"1.7.0"</span>,
+   <span class="hljs-attr">"express"</span>: <span class="hljs-string">"^4.8.7"</span>,
+   <span class="hljs-attr">"jsonwebtoken"</span>: <span class="hljs-string">"^7.3.0"</span>,
+   <span class="hljs-attr">"moment"</span>: <span class="hljs-string">"^2.17.1"</span>,
+   <span class="hljs-attr">"moment-timezone"</span>: <span class="hljs-string">"^0.5.13"</span>,
+   <span class="hljs-attr">"mongoose"</span>: <span class="hljs-string">"^5.1.1"</span>,
+   <span class="hljs-attr">"node-uuid"</span>: <span class="hljs-string">"^1.4.8"</span>,
+   <span class="hljs-attr">"swagger-ui-express"</span>: <span class="hljs-string">"^2.0.13"</span>,
+   <span class="hljs-attr">"sync-request"</span>: <span class="hljs-string">"^4.0.2"</span>
+ }
+}
+</code></pre>
+
+<p>Paste the code into the package.json file and after you save it, run <code>npm install</code>. Congratulations, you now have all of the dependencies and setup required to run our simple REST API.</p>
+
+<p>Our project will contain three module folders:</p>
+
+<ul>
+  <li>“common” (handling all shared services and information between user modules)</li>
+  <li>“users” (everything regarding users)</li>
+  <li>“auth” (handle the flow to generate JWT and login flow)</li>
+</ul>
+
+<h2 id="creating-the-user-module">Creating the User Module</h2>
+
+<p>We will be using <a href="http://mongoosejs.com/" rel="noopener noreferrer">Mongoose</a>, an ODM (object data modeling) library for MongoDB, to create the user model within the user schema.</p>
+
+<p>First, we need to create the schema in <code>/users/models/users.model.js</code>:</p>
+
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">const</span> userSchema = <span class="hljs-keyword">new</span> Schema({
+   <span class="hljs-attr">firstName</span>: <span class="hljs-built_in">String</span>,
+   <span class="hljs-attr">lastName</span>: <span class="hljs-built_in">String</span>,
+   <span class="hljs-attr">email</span>: <span class="hljs-built_in">String</span>,
+   <span class="hljs-attr">password</span>: <span class="hljs-built_in">String</span>,
+   <span class="hljs-attr">permissionLevel</span>: <span class="hljs-built_in">Number</span>
+});
+</code></pre>
+
+<p>Once we define the schema, we can easily attach the schema to the user model.</p>
+
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">const</span> userModel = mongoose.model(<span class="hljs-string">'Users'</span>, userSchema);
+</code></pre>
+
+<p>After that, we can use this model to implement all the CRUD operations that we want within our endpoints.</p>
+
+<p>Let’s start with the “create user” operation by defining the route in <code>users/routes.config.js</code>:</p>
+
+<pre><code class="language-javascript hljs">app.post(<span class="hljs-string">'/users'</span>, [
+   UsersController.insert
+]);
+</code></pre>
+
+<p>At this point, we can test our Mongoose model by running the server and sending a <code>POST</code> request to <code>/users</code> with some JSON data:</p>
+
+<pre><code class="language-JSON hljs">{
+   <span class="hljs-attr">"firstName"</span> : <span class="hljs-string">"Marcos"</span>,
+   <span class="hljs-attr">"lastName"</span> : <span class="hljs-string">"Silva"</span>,
+   <span class="hljs-attr">"email"</span> : <span class="hljs-string">"marcos.henrique@toptal.com"</span>,
+   <span class="hljs-attr">"password"</span> : <span class="hljs-string">"s3cr3tp4sswo4rd"</span>
+}
+
+</code></pre>
+
+<p>We can use the controller to hash the password appropriately in <code>/users/controllers/users.controller.js</code>:</p>
+
+<pre><code class="language-javascript hljs">exports.insert = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   <span class="hljs-keyword">let</span> salt = crypto.randomBytes(<span class="hljs-number">16</span>).toString(<span class="hljs-string">'base64'</span>);
+   <span class="hljs-keyword">let</span> hash = crypto.createHmac(<span class="hljs-string">'sha512'</span>,salt)
+                                    .update(req.body.password)
+                                    .digest(<span class="hljs-string">"base64"</span>);
+   req.body.password = salt + <span class="hljs-string">"$"</span> + hash;
+   req.body.permissionLevel = <span class="hljs-number">1</span>;
+   UserModel.createUser(req.body)
+       .then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+           res.status(<span class="hljs-number">201</span>).send({<span class="hljs-attr">id</span>: result._id});
+       });
+};
+</code></pre>
+
+<p>At this point the  result of a valid post will be just the id from the created user: <code>{ "id": "5b02c5c84817bf28049e58a3" }</code></p>
+
+<p>And we need to add the <code>createUser</code> method to the model in <code>users/models/users.model.js</code>:</p>
+
+<pre><code class="language-javascript hljs">exports.createUser = <span class="hljs-function">(<span class="hljs-params">userData</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">new</span> User(userData);
+    <span class="hljs-keyword">return</span> user.save();
+};
+
+</code></pre>
+
+<p>All set, we need to see if the user exists. For that, we are going to implement the get user by id feature for the following endpoint: <code>users/:userId</code>.</p>
+
+<p>First, we create a route in <code>/users/routes/config.js</code>:</p>
+
+<pre><code class="language-javascript hljs">app.get(<span class="hljs-string">'/users/:userId'</span>, [
+    UsersController.getById
+]);
+</code></pre>
+
+<p>Then we create the controller in <code>/users/controllers/users.controller.js</code>:</p>
+
+<pre><code class="language-javascript hljs">
+exports.getById = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   UserModel.findById(req.params.userId).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+       res.status(<span class="hljs-number">200</span>).send(result);
+   });
+};
+
+</code></pre>
+
+<p>And finally add the <code>findById</code> method to the model in <code>/users/models/users.model.js</code>:</p>
+
+<pre><code class="language-javascript hljs">exports.findById = <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> User.findById(id).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+        result = result.toJSON();
+        <span class="hljs-keyword">delete</span> result._id;
+        <span class="hljs-keyword">delete</span> result.__v;
+        <span class="hljs-keyword">return</span> result;
+    });
+};
+
+</code></pre>
+
+<p>The response will be like this:</p>
+
+<pre><code class="language-JSON hljs">{
+   <span class="hljs-attr">"firstName"</span>: <span class="hljs-string">"Marcos"</span>,
+   <span class="hljs-attr">"lastName"</span>: <span class="hljs-string">"Silva"</span>,
+   <span class="hljs-attr">"email"</span>: <span class="hljs-string">"marcos.henrique@toptal.com"</span>,
+   <span class="hljs-attr">"password"</span>: <span class="hljs-string">"Y+XZEaR7J8xAQCc37nf1rw==$p8b5ykUx6xpC6k8MryDaRmXDxncLumU9mEVabyLdpotO66Qjh0igVOVerdqAh+CUQ4n/E0z48mp8SDTpX2ivuQ=="</span>,
+   <span class="hljs-attr">"permissionLevel"</span>: <span class="hljs-number">1</span>,
+   <span class="hljs-attr">"id"</span>: <span class="hljs-string">"5b02c5c84817bf28049e58a3"</span>
+}
+</code></pre>
+
+<p>Note that we can see the hashed password. For this tutorial, we are showing the password, but the obvious best practice is never to reveal the password, even if it has been hashed. Another thing we can see is the <code>permissionLevel</code>, which we will use to handle the user permissions later on.</p>
+
+<p>Repeating the pattern laid out above we can now add the functionality to update the user. We will use the <code>PATCH</code> operation since it will enable us to send only the fields we want to change. The route will, therefore, be <code>PATCH to /users/:userid</code> and we’ll be sending any fields we want to change. We will also need to implement some extra validation since changes should be restricted to the user in question or an admin, and only an admin should be able to change the <code>permissionLevel</code>. We’ll skip that for now and get back to it once we implement the auth module. For now, our controller will look like this:</p>
+
+<pre><code class="language-javascript hljs">exports.patchById = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   <span class="hljs-keyword">if</span> (req.body.password){
+       <span class="hljs-keyword">let</span> salt = crypto.randomBytes(<span class="hljs-number">16</span>).toString(<span class="hljs-string">'base64'</span>);
+       <span class="hljs-keyword">let</span> hash = crypto.createHmac(<span class="hljs-string">'sha512'</span>, salt).update(req.body.password).digest(<span class="hljs-string">"base64"</span>);
+       req.body.password = salt + <span class="hljs-string">"$"</span> + hash;
+   }
+   UserModel.patchUser(req.params.userId, req.body).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+           res.status(<span class="hljs-number">204</span>).send({});
+   });
+};
+
+</code></pre>
+
+<p>By default, we will send an HTTP code 204 with no response body to indicate that the request was successful.</p>
+
+<p>And we’ll need to add the <code>patchUser</code> method to the model:</p>
+
+<pre><code class="language-javascript hljs">exports.patchUser = <span class="hljs-function">(<span class="hljs-params">id, userData</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        User.findById(id, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, user</span>) </span>{
+            <span class="hljs-keyword">if</span> (err) reject(err);
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> userData) {
+                user[i] = userData[i];
+            }
+            user.save(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, updatedUser</span>) </span>{
+                <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> reject(err);
+                resolve(updatedUser);
+            });
+        });
+    })
+};
+
+</code></pre>
+
+<p>The user list will be implemented as a <code>GET</code> at <code>/users/</code> by the following controller:</p>
+
+<pre><code class="language-javascript hljs">exports.list = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   <span class="hljs-keyword">let</span> limit = req.query.limit &amp;&amp; req.query.limit &lt;= <span class="hljs-number">100</span> ? <span class="hljs-built_in">parseInt</span>(req.query.limit) : <span class="hljs-number">10</span>;
+   <span class="hljs-keyword">let</span> page = <span class="hljs-number">0</span>;
+   <span class="hljs-keyword">if</span> (req.query) {
+       <span class="hljs-keyword">if</span> (req.query.page) {
+           req.query.page = <span class="hljs-built_in">parseInt</span>(req.query.page);
+           page = <span class="hljs-built_in">Number</span>.isInteger(req.query.page) ? req.query.page : <span class="hljs-number">0</span>;
+       }
+   }
+   UserModel.list(limit, page).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+       res.status(<span class="hljs-number">200</span>).send(result);
+   })
+};
+</code></pre>
+
+<p>The corresponding model method will be:</p>
+
+<pre><code class="language-javascript hljs">exports.list = <span class="hljs-function">(<span class="hljs-params">perPage, page</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        User.find()
+            .limit(perPage)
+            .skip(perPage * page)
+            .exec(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, users</span>) </span>{
+                <span class="hljs-keyword">if</span> (err) {
+                    reject(err);
+                } <span class="hljs-keyword">else</span> {
+                    resolve(users);
+                }
+            })
+    });
+};
+</code></pre>
+
+<p>The resulting list response will have the following structure:</p>
+
+<pre><code class="language-JSON hljs">[
+   {
+       <span class="hljs-attr">"firstName"</span>: <span class="hljs-string">"Marco"</span>,
+       <span class="hljs-attr">"lastName"</span>: <span class="hljs-string">"Silva"</span>,
+       <span class="hljs-attr">"email"</span>: <span class="hljs-string">"marcos.henrique@toptal.com"</span>,
+       <span class="hljs-attr">"password"</span>: <span class="hljs-string">"z4tS/DtiH+0Gb4J6QN1K3w==$al6sGxKBKqxRQkDmhnhQpEB6+DQgDRH2qr47BZcqLm4/fphZ7+a9U+HhxsNaSnGB2l05Oem/BLIOkbtOuw1tXA=="</span>,
+       <span class="hljs-attr">"permissionLevel"</span>: <span class="hljs-number">1</span>,
+       <span class="hljs-attr">"id"</span>: <span class="hljs-string">"5b02c5c84817bf28049e58a3"</span>
+   },
+   {
+       <span class="hljs-attr">"firstName"</span>: <span class="hljs-string">"Paulo"</span>,
+       <span class="hljs-attr">"lastName"</span>: <span class="hljs-string">"Silva"</span>,
+       <span class="hljs-attr">"email"</span>: <span class="hljs-string">"marcos.henrique2@toptal.com"</span>,
+       <span class="hljs-attr">"password"</span>: <span class="hljs-string">"wTsqO1kHuVisfDIcgl5YmQ==$cw7RntNrNBNw3MO2qLbx959xDvvrDu4xjpYfYgYMxRVDcxUUEgulTlNSBJjiDtJ1C85YimkMlYruU59rx2zbCw=="</span>,
+       <span class="hljs-attr">"permissionLevel"</span>: <span class="hljs-number">1</span>,
+       <span class="hljs-attr">"id"</span>: <span class="hljs-string">"5b02d038b653603d1ca69729"</span>
+   }
+]
+</code></pre>
+
+<p>And the last part to be implemented is the <code>DELETE</code> at <code>/users/:userId</code>.</p>
+
+<p>Our controller for deletion will be:</p>
+
+<pre><code class="language-javascript hljs">exports.removeById = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   UserModel.removeById(req.params.userId)
+       .then(<span class="hljs-function">(<span class="hljs-params">result</span>)=&gt;</span>{
+           res.status(<span class="hljs-number">204</span>).send({});
+       });
+};
+</code></pre>
+
+<p>Same as before, the controller will return HTTP code 204 and no content body as confirmation.</p>
+
+<p>The corresponding model method should look like this:</p>
+
+<pre><code class="language-javascript hljs">exports.removeById = <span class="hljs-function">(<span class="hljs-params">userId</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        User.remove({<span class="hljs-attr">_id</span>: userId}, (err) =&gt; {
+            <span class="hljs-keyword">if</span> (err) {
+                reject(err);
+            } <span class="hljs-keyword">else</span> {
+                resolve(err);
+            }
+        });
+    });
+};
+
+</code></pre>
+
+<p>We now have all the necessary operations for manipulating the user resource, and we’re done with the user controller. The main idea of this code is to give you the core concepts of using the REST pattern. We’ll need to return to this code to implement some validations and permissions to it, but first, we’ll need to start building our security. Let’s create the auth module.</p>
+
+<h2 id="creating-the-auth-module">Creating the Auth Module</h2>
+
+<p>Before we can secure the <code>users</code> module by implementing the permission and validation middleware, we’ll need to be able to generate a valid token for the current user. We will generate a JWT in response to the user providing a valid email and password. JWT is a remarkable JSON web token that you can use to have the user securely make several requests without validating repeatedly. It usually has an expiration time, and a new token is recreated every few minutes to keep the communication secure. For this tutorial, though, we will forgo refreshing the token and keep it simple with a single token per login.</p>
+
+<p>First, we will create an endpoint for <code>POST</code> requests to <code>/auth</code> resource. The request body will contain the user email and password:</p>
+
+<pre><code class="language-JSON hljs">{
+   <span class="hljs-attr">"email"</span> : <span class="hljs-string">"marcos.henrique2@toptal.com"</span>,
+   <span class="hljs-attr">"password"</span> : <span class="hljs-string">"s3cr3tp4sswo4rd2"</span>
+}
+</code></pre>
+
+<p>Before we engage the controller we should validate the user in <code>/authorization/middlewares/verify.user.middleware.js</code>:</p>
+
+<pre><code class="language-javascript hljs">exports.isPasswordAndUserMatch = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+   UserModel.findByEmail(req.body.email)
+       .then(<span class="hljs-function">(<span class="hljs-params">user</span>)=&gt;</span>{
+           <span class="hljs-keyword">if</span>(!user[<span class="hljs-number">0</span>]){
+               res.status(<span class="hljs-number">404</span>).send({});
+           }<span class="hljs-keyword">else</span>{
+               <span class="hljs-keyword">let</span> passwordFields = user[<span class="hljs-number">0</span>].password.split(<span class="hljs-string">'$'</span>);
+               <span class="hljs-keyword">let</span> salt = passwordFields[<span class="hljs-number">0</span>];
+               <span class="hljs-keyword">let</span> hash = crypto.createHmac(<span class="hljs-string">'sha512'</span>, salt).update(req.body.password).digest(<span class="hljs-string">"base64"</span>);
+               <span class="hljs-keyword">if</span> (hash === passwordFields[<span class="hljs-number">1</span>]) {
+                   req.body = {
+                       <span class="hljs-attr">userId</span>: user[<span class="hljs-number">0</span>]._id,
+                       <span class="hljs-attr">email</span>: user[<span class="hljs-number">0</span>].email,
+                       <span class="hljs-attr">permissionLevel</span>: user[<span class="hljs-number">0</span>].permissionLevel,
+                       <span class="hljs-attr">provider</span>: <span class="hljs-string">'email'</span>,
+                       <span class="hljs-attr">name</span>: user[<span class="hljs-number">0</span>].firstName + <span class="hljs-string">' '</span> + user[<span class="hljs-number">0</span>].lastName,
+                   };
+                   <span class="hljs-keyword">return</span> next();
+               } <span class="hljs-keyword">else</span> {
+                   <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send({<span class="hljs-attr">errors</span>: [<span class="hljs-string">'Invalid email or password'</span>]});
+               }
+           }
+       });
+};
+</code></pre>
+
+<p>Having done that we can move on to the controller and generate the JWT:</p>
+
+<pre><code class="language-javascript hljs">exports.login = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+   <span class="hljs-keyword">try</span> {
+       <span class="hljs-keyword">let</span> refreshId = req.body.userId + jwtSecret;
+       <span class="hljs-keyword">let</span> salt = crypto.randomBytes(<span class="hljs-number">16</span>).toString(<span class="hljs-string">'base64'</span>);
+       <span class="hljs-keyword">let</span> hash = crypto.createHmac(<span class="hljs-string">'sha512'</span>, salt).update(refreshId).digest(<span class="hljs-string">"base64"</span>);
+       req.body.refreshKey = salt;
+       <span class="hljs-keyword">let</span> token = jwt.sign(req.body, jwtSecret);
+       <span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> Buffer(hash);
+       <span class="hljs-keyword">let</span> refresh_token = b.toString(<span class="hljs-string">'base64'</span>);
+       res.status(<span class="hljs-number">201</span>).send({<span class="hljs-attr">accessToken</span>: token, <span class="hljs-attr">refreshToken</span>: refresh_token});
+   } <span class="hljs-keyword">catch</span> (err) {
+       res.status(<span class="hljs-number">500</span>).send({<span class="hljs-attr">errors</span>: err});
+   }
+};
+</code></pre>
+
+<p>Even though we won’t be refreshing the token in this tutorial, the controller has been set up to enable such generation to make it easier to implement it in subsequent development.</p>
+
+<p>All we need now is to create the route and invoke the appropriate middleware in <code>/authorization/routes.config.js</code>:</p>
+
+<pre><code class="language-javascript hljs">    app.post(<span class="hljs-string">'/auth'</span>, [
+        VerifyUserMiddleware.hasAuthValidFields,
+        VerifyUserMiddleware.isPasswordAndUserMatch,
+        AuthorizationController.login
+    ]);
+</code></pre>
+
+<p>The response will contain the generated JWT in the accessToken field:</p>
+
+<pre><code class="language-JSON hljs">{
+   <span class="hljs-attr">"accessToken"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjAyYzVjODQ4MTdiZjI4MDQ5ZTU4YTMiLCJlbWFpbCI6Im1hcmNvcy5oZW5yaXF1ZUB0b3B0YWwuY29tIiwicGVybWlzc2lvbkxldmVsIjoxLCJwcm92aWRlciI6ImVtYWlsIiwibmFtZSI6Ik1hcmNvIFNpbHZhIiwicmVmcmVzaF9rZXkiOiJiclhZUHFsbUlBcE1PakZIRG1FeENRPT0iLCJpYXQiOjE1MjY5MjMzMDl9.mmNg-i44VQlUEWP3YIAYXVO-74803v1mu-y9QPUQ5VY"</span>,
+   <span class="hljs-attr">"refreshToken"</span>: <span class="hljs-string">"U3BDQXBWS3kyaHNDaGJNanlJTlFkSXhLMmFHMzA2NzRsUy9Sd2J0YVNDTmUva0pIQ0NwbTJqOU5YZHgxeE12NXVlOUhnMzBWMGNyWmdOTUhSaTdyOGc9PQ=="</span>
+}
+</code></pre>
+
+<p>Having created the token, we can use it inside the <code>Authorization</code> header using the form <code>Bearer ACCESS_TOKEN</code>.</p>
+
+<h2 id="creating-permissions-and-validations-middleware">Creating Permissions and Validations Middleware</h2>
+
+<p>The first thing we should define is who can use the <code>users</code> resource. These are the scenarios that we’ll need to handle:</p>
+
+<ul>
+  <li>Public for creating users (registration process). We will not use JWT for this scenario.</li>
+  <li>Private for the logged-in user and for admins to update that user.</li>
+  <li>Private for admin only for removing user accounts.</li>
+</ul>
+
+<p>Having identified these scenarios, we will first require a middleware that always validates the user if they are using a valid JWT. The middleware in <code>/common/middlewares/auth.validation.middleware.js</code> can be as simple as:</p>
+
+<pre><code class="language-javascript hljs">exports.validJWTNeeded = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (req.headers[<span class="hljs-string">'authorization'</span>]) {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">let</span> authorization = req.headers[<span class="hljs-string">'authorization'</span>].split(<span class="hljs-string">' '</span>);
+            <span class="hljs-keyword">if</span> (authorization[<span class="hljs-number">0</span>] !== <span class="hljs-string">'Bearer'</span>) {
+                <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">401</span>).send();
+            } <span class="hljs-keyword">else</span> {
+                req.jwt = jwt.verify(authorization[<span class="hljs-number">1</span>], secret);
+                <span class="hljs-keyword">return</span> next();
+            }
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">403</span>).send();
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">401</span>).send();
+    }
+}; 
+</code></pre>
+
+<p>We will use HTTP error codes for handling request errors:</p>
+
+<ul>
+  <li>HTTP 401 for an invalid request</li>
+  <li>HTTP 403 for a valid request with an invalid token, or valid token with invalid permissions</li>
+</ul>
+
+<p>We can use the bitwise AND operator (bitmasking) to control the permissions. If we set each required permission as a power of 2, we can treat each bit of the 32bit integer as a single permission. An admin can then have all permissions by setting their permission value to 2147483647. That user could then have access to any route. As another example, a user whose permission value was set to 7 would have permissions to the roles marked with bits for values 1, 2, and 4 (two to the power of 0, 1, and 2).</p>
+
+<p>The middleware for that would look like this:</p>
+
+<pre><code class="language-javascript hljs">exports.minimumPermissionLevelRequired = <span class="hljs-function">(<span class="hljs-params">required_permission_level</span>) =&gt;</span> {
+   <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+       <span class="hljs-keyword">let</span> user_permission_level = <span class="hljs-built_in">parseInt</span>(req.jwt.permission_level);
+       <span class="hljs-keyword">let</span> user_id = req.jwt.user_id;
+       <span class="hljs-keyword">if</span> (user_permission_level &amp; required_permission_level) {
+           <span class="hljs-keyword">return</span> next();
+       } <span class="hljs-keyword">else</span> {
+           <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">403</span>).send();
+       }
+   };
+};
+</code></pre>
+
+<p>The middleware is generic. If the user permission level and the required permission level coincide in at least one bit, the result will be greater than zero and we can let the action proceed, otherwise the HTTP code 403 will be returned.</p>
+
+<p>Now, we need to add the authentication middleware to the user’s module routes in <code>/users/routes.config.js</code>:</p>
+
+<pre><code class="language-javascript hljs">app.post(<span class="hljs-string">'/users'</span>, [
+   UsersController.insert
+]);
+app.get(<span class="hljs-string">'/users'</span>, [
+   ValidationMiddleware.validJWTNeeded,
+   PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+   UsersController.list
+]);
+app.get(<span class="hljs-string">'/users/:userId'</span>, [
+   ValidationMiddleware.validJWTNeeded,
+   PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+   PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+   UsersController.getById
+]);
+app.patch(<span class="hljs-string">'/users/:userId'</span>, [
+   ValidationMiddleware.validJWTNeeded,
+   PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+   PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+   UsersController.patchById
+]);
+app.delete(<span class="hljs-string">'/users/:userId'</span>, [
+   ValidationMiddleware.validJWTNeeded,
+   PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
+   UsersController.removeById
+]);
+</code></pre>
+
+<p>This concludes the basic development on our REST API. All that remains to be done is to test it all out.</p>
+
+<h2 id="running-and-testing-with-insomnia">Running and Testing with Insomnia</h2>
+
+<p><a href="https://insomnia.rest/" rel="noopener noreferrer">Insomnia</a> is a decent REST client with a good free version. The best practice is, of course, to include code tests and implement proper error reporting in the project, but third-party REST clients are great for testing and implementing third-party solutions when error reporting and debugging the service is not available. We’ll be using it here to play the role of an application and get some insight into what is going on with our API.</p>
+
+<p>To create a user, we just need to POST the required fields to the appropriate endpoint and store the generated ID for subsequent use.</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751076326-aaabd4b81cc02831b9eab0edeaa3e73a.png" alt="Request with the appropriate data for creating a user"></p>
+
+<p>The API will respond with the user ID:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751090456-8bd6dcb5ac8cc372bc24aa0697a8638e.png" alt="Confirmation response with userID"></p>
+
+<p>We can now generate the JWT using the <code>/auth/</code> endpoint:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751101188-6d4b1cc870cb61ec2f0a7a4aa5d9abc2.png" alt="Request with login data"></p>
+
+<p>We should get a token as our response:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751112289-c36c6028e58d1c79167d16ef929a5870.png" alt="Confirmation containing the corresponding JSON Web Token"></p>
+
+<p>Grab the <code>accessToken</code>, prefix it with <code>Bearer </code> and add it to the request headers under <code>Authorization</code>:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751124349-7e878d483c2e88dc1e013c9561d0fe9f.png" alt="Setting up the headers to transfer contain the authenticating JWT"></p>
+
+<p>If we don’t do this now that we have implemented the permissions middleware, every request other than registration would be returning HTTP code 401. With the valid token in place, though, we get the following response from <code>/users/:userId</code>:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751140111-6318370e61efd17cb68016d139d2e727.png" alt="Response listing the data for the indicated user"></p>
+
+<p>Also, as was mentioned before, we are displaying all fields, for educational purposes and for sake of simplicity. The password (hashed or otherwise) should never be visible in the response.</p>
+
+<p>Let’s try to get a list of users:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751151332-641b7dfe2e5df497521621b2368f81e0.png" alt="Request for a list of all users"></p>
+
+<p>Surprise! We get a 403 response.</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751163625-5ea42a264aa5651c1c675c26bfadcf2b.png" alt="Action refused due to lack of appropriate permission level"></p>
+
+<p>Our user does not have the permissions to access this endpoint. We will need to change the <code>permissionLevel</code> of our user from 1 to 7 manually in MongoDB and then generate a new JWT.</p>
+
+<p>After that is done, we get the proper response:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751174933-a300b2f6e34652244b82495106bcd9b4.png" alt="Response with all users and their data"></p>
+
+<p>Next let’s test the update functionality by sending a <code>PATCH</code> request with some fields to our <code>/users/:userId</code> endpoint:</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751188142-4fea61cea6b220cca7df38b0aae223b9.png" alt="Requerst containing partial data to be updated"></p>
+
+<p>We expect a 204 response as confirmation of a successful operation, but we can request the user once again to verify.</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751205862-e0eebad855908c588e66b5ee62bb4cc2.png" alt="Response after successful change"></p>
+
+<p>Finally, we need to delete the user. We’ll need to create a new user as described above (don’t forget to note the user ID) and make sure that we have the appropriate JWT for an admin user.</p>
+
+<p><img src="./Creating a Secure REST API in Node.js _ Toptal_files/toptal-blog-image-1533751221252-8da88b3182850b21a6e13017ab6f6524.png" alt="Request setup for deleting a user"></p>
+
+<p>Sending a <code>DELETE</code> request to <code>/users/:userId</code> we should get a 204 response as confirmation. We can, again, verify by requesting <code>/users/</code> to list all existing users.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>With the tools and methods covered in this tutorial, you should now be able to create simple and secure REST APIs on Node.js. A lot of best practices that are not essential to the process were skipped so don’t forget to:</p>
+
+<ul>
+  <li>implement proper validations (e.g. make sure that user email is unique)</li>
+  <li>implement unit testing and error reporting</li>
+  <li>prevent users from changing their own permission level</li>
+  <li>prevent admins from removing themselves</li>
+  <li>prevent disclosure of sensitive information (e.g., hashed passwords)</li>
+</ul>
+
+<p>You can get the source code on <a href="https://github.com/makinhs/rest-api-tutorial" rel="noopener noreferrer">my GitHub</a>.</p>
+
+<div class="pop_out_box is-full_width is-big" style="text-align: center;"><strong>Related:  </strong><a href="https://www.toptal.com/api-developers/5-new-things-rest-specification">5 Things You Have Never Done with a REST Specification</a></div>
+</div><aside class="blog_post-aside"><div class="article_tags"><div class="tags_section is-inline"><p class="tags_section-title_inline">Tags</p><a class="tag-item" href="https://www.toptal.com/developers/blog/tags/javascript">JavaScript</a><a class="tag-item" href="https://www.toptal.com/developers/blog/tags/nodejs">Node.js</a><a class="tag-item" href="https://www.toptal.com/developers/blog/tags/express">Express</a><a class="tag-item" href="https://www.toptal.com/developers/blog/tags/rest">REST</a></div></div><div id="blog_post-article-author"><div class="article_author"><div class="author_section"><div class="author_section-card"><div class="author_card"><div class="author_card-photo_content"><span data-cell="DeferredImage" data-cell-options="{&quot;src&quot;:&quot;https://uploads.toptal.io/user/photo/441457/large_aae33a693e6c00a964ccb332f61a3fe2.jpeg&quot;}" class="author_card-photo" alt="Marcos Henrique da Silva" data-cell-i-d="18"></span><div class="author_card-watermark"><svg viewBox="0 0 18 25" xmlns="http://www.w3.org/2000/svg"><defs><path d="M22.22 0l-1.98 1.97 3.67 3.64L16 13.48l9.78 9.72 1.97-1.97-3.66-3.64L32 9.72 22.22 0zM20.4 13.83l5.88-5.85 1.21 1.2-5.88 5.85-1.21-1.2z" id="b"></path><filter filterUnits="objectBoundingBox" height="117.2%" id="a" width="125%" x="-12.5%" y="-4.3%"><feoffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset><fegaussianblur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"></fegaussianblur><fecolormatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></fecolormatrix></filter></defs><g fill="none" fill-rule="evenodd" transform="translate(-15)"><use fill="#000" filter="url(#a)" xlink:href="#b"></use><use fill="#F5F6F7" xlink:href="#b"></use></g></svg></div></div><div class="author_card-content"><p class="author_card-name">Marcos Henrique da Silva</p><p class="author_card-job_title">Freelance JavaScript Developer</p></div></div></div><div class="author_section-content"><p class="author_section-title">About the author</p><p class="author_section-description">Marcos is passionate about REST architecture, Agile development methodology, and the JavaScript language for programming. He's been working with IT since 2003, and for the past few years, he's been working nearly exclusively with software development and focusing on web applications. He specializes in JavaScript (using frameworks like Angular 1 and Node.js) and Java EE. Marcos has also worked with native Android apps and PHP.</p><div class="author_section-hire" data-ga-arguments="[&quot;ClickedOnHireTheAuthor_bottom&quot;]" data-ga-call="trackBlogAction" data-ga-listen="click"><a href="https://www.toptal.com/hire?interested_in=developers&amp;skill=nodejs" class="button is-highlight">Hire Marcos</a></div></div></div></div></div><div class="comments_section"><div id="disqus_thread_container"><div id="disqus_thread"><iframe id="dsq-app9525" name="dsq-app9525" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 7385px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="indicator-north" name="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 780px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 780px !important; max-width: 780px !important; position: fixed !important; z-index: 2147483646 !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important; display: none !important;" src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource(3).html"></iframe><iframe id="indicator-south" name="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 780px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 780px !important; max-width: 780px !important; position: fixed !important; z-index: 2147483646 !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important; display: none !important;" src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource(4).html"></iframe></div></div><script>function disqus_config() {
+  function notifyAboutNewComment() {
+    var url = '/disqus_comments.json?authenticity_token=RsRoNpyEuwkmWTD6ZhHX%2B3Vw8tpqs99eFOa30Tx30DsRJ2A%2FJcaPLEC4CjQS5oeVyBzOnt9XA2ik8hatM20xoQ%3D%3D';
+    window.fetch(url, {method: 'POST'});
+  }
+
+  this.page.url = 'https://www.toptal.com/nodejs/secure-rest-api-in-nodejs';
+  this.page.identifier = 'nodejs/secure-rest-api-in-nodejs';
+  this.callbacks.onNewComment = [notifyAboutNewComment];
+}
+
+var disqus_shortname = 'toptal';
+
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></aside></main><aside class="blog_post-sidebar" data-role="blog_post.sidebar"><div class="blog_post-sidebar_section is-subscription"><div class="article_aside_subscription"><div class="subscribe_card is-compact" data-cell="SubscribeForm" data-placement="side_bar" data-cell-i-d="19"><div class="subscribe_card-inner"><p class="subscribe_card-title">World-class articles, delivered weekly.</p><div class="subscribe_card-content"><form action="https://www.toptal.com/blog/subscription" class="subscribe_card-form" data-recaptcha="invisible" method="post"><input class="subscribe_card-input" name="blog_subscription[email]" placeholder="Enter your email" role="subscribe_email" type="text"><input name="blog_subscription[vertical]" type="hidden"><div class="recaptcha-container" role="recaptcha-container"><div class="grecaptcha-badge" data-style="none" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;"><div class="grecaptcha-logo"><iframe src="./Creating a Secure REST API in Node.js _ Toptal_files/anchor(1).html" width="256" height="60" role="presentation" name="a-9qzt1upqst0n" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><button name="button" type="submit" class="form_button is-highlight">Get great content</button></form><p class="subscribe_card-disclaimer">Subscription implies consent to our <a href="https://www.toptal.com/privacy">privacy policy</a></p></div></div><div class="subscribe_card-post_roll"><span class="checkmark"></span><p class="subscribe_card-post_roll_text">Thank you!<br>Check out your inbox to confirm your invite.</p></div><button aria-label="Close" class="subscribe_card-hide" data-role="subscribe_section.hide"></button></div></div></div><div class="blog_post-sidebar_section is-trending_articles"><div class="trending_articles_section"><h2 class="trending_articles_section-title">Trending Articles</h2><div class="trending_articles_section-content"><div class="trending_articles_section-item"><div class="blog_post_card is-plain-text"><div class="blog_post_card__breadcrumbs"><a href="https://www.toptal.com/developers/blog" class="blog_post_card__breadcrumbs-domain">Engineering</a><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg><a href="https://www.toptal.com/developers/blog/technology" class="blog_post_card__breadcrumbs-topic">Technology</a></div><div class="blog_post_card__title"><h3 class="blog_post_card__title-topic"><a class="blog_post_card__title-link" href="https://www.toptal.com/web/json-vs-xml-part-1">A Deep Look at JSON vs. XML, Part 1: The History of Each Standard</a></h3></div></div></div><div class="trending_articles_section-item"><div class="blog_post_card is-plain-text"><div class="blog_post_card__breadcrumbs"><a href="https://www.toptal.com/developers/blog" class="blog_post_card__breadcrumbs-domain">Engineering</a><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg><a href="https://www.toptal.com/developers/blog/technology" class="blog_post_card__breadcrumbs-topic">Technology</a></div><div class="blog_post_card__title"><h3 class="blog_post_card__title-topic"><a class="blog_post_card__title-link" href="https://www.toptal.com/java/java-automation-testing-tutorial-2019">Supercharged Testing Tips for 2019: A Java Automation Testing Tutorial</a></h3></div></div></div><div class="trending_articles_section-item"><div class="blog_post_card is-plain-text"><div class="blog_post_card__breadcrumbs"><a href="https://www.toptal.com/developers/blog" class="blog_post_card__breadcrumbs-domain">Engineering</a><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg><a href="https://www.toptal.com/developers/blog/web-front-end" class="blog_post_card__breadcrumbs-topic">Web front-end</a></div><div class="blog_post_card__title"><h3 class="blog_post_card__title-topic"><a class="blog_post_card__title-link" href="https://www.toptal.com/wordpress/modern-wordpress-development-pt-1">How to Approach Modern WordPress Development (Part 1)</a></h3></div></div></div><div class="trending_articles_section-item"><div class="blog_post_card is-plain-text"><div class="blog_post_card__breadcrumbs"><a href="https://www.toptal.com/developers/blog" class="blog_post_card__breadcrumbs-domain">Engineering</a><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg><a href="https://www.toptal.com/developers/blog/web-front-end" class="blog_post_card__breadcrumbs-topic">Web front-end</a></div><div class="blog_post_card__title"><h3 class="blog_post_card__title-topic"><a class="blog_post_card__title-link" href="https://www.toptal.com/javascript/predicting-javascript-future">A Look at JavaScript’s Future</a></h3></div></div></div></div></div></div><div class="blog_post-sidebar_section is-related_talent"><div class="related_talent_section"><div class="tags_section"><p class="tags_section-title_stacked">See our related talents</p><a class="tag-item" href="https://www.toptal.com/nodejs">Node.js</a></div></div></div><div class="blog_post-sidebar_section is-author_card is-scrolling" data-role="blog_post.scroll_animate"><div class="author_card_section"><p class="author_card_section-title">Hire the author</p><a class="scroll-to-wrapper" data-cell="ScrollTo" data-cell-options="{&quot;selector&quot;:&quot;#blog_post-article-author&quot;}" href="https://www.toptal.com/nodejs/secure-rest-api-in-nodejs#blog_post-article-author" data-cell-i-d="20"><div class="author_card is-clickable"><div class="author_card-photo_content"><img src="./Creating a Secure REST API in Node.js _ Toptal_files/large_aae33a693e6c00a964ccb332f61a3fe2.jpeg" class="author_card-photo is-loaded" alt="Marcos Henrique da Silva"><div class="author_card-watermark"><svg viewBox="0 0 18 25" xmlns="http://www.w3.org/2000/svg"><defs><path d="M22.22 0l-1.98 1.97 3.67 3.64L16 13.48l9.78 9.72 1.97-1.97-3.66-3.64L32 9.72 22.22 0zM20.4 13.83l5.88-5.85 1.21 1.2-5.88 5.85-1.21-1.2z" id="b"></path><filter filterUnits="objectBoundingBox" height="117.2%" id="a" width="125%" x="-12.5%" y="-4.3%"><feoffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset><fegaussianblur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"></fegaussianblur><fecolormatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></fecolormatrix></filter></defs><g fill="none" fill-rule="evenodd" transform="translate(-15)"><use fill="#000" filter="url(#a)" xlink:href="#b"></use><use fill="#F5F6F7" xlink:href="#b"></use></g></svg></div></div><div class="author_card-content"><p class="author_card-name">Marcos Henrique da Silva</p><p class="author_card-job_title">Freelance JavaScript Developer</p></div></div></a></div></div><div class="blog_post-sidebar_section is-read_next" data-role="blog_post.sidebar_sticky" data-sticky-percentage="0.7"><div class="read_next"><h2 class="read_next-title">Read Next</h2><div class="blog_post_card"><div class="blog_post_card-inner"><a class="blog_post_card__cover" href="https://www.toptal.com/web/json-vs-xml-part-1" style="background-image: url(https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/27631/0712-JSON_vs_XML_part_1_Dan-Waldek_Newsletter-8cc5b509e108329e4e7c1f891c3fd9c9.png);"></a><div class="blog_post_card-content"><div class="blog_post_card__breadcrumbs"><a href="https://www.toptal.com/developers/blog" class="blog_post_card__breadcrumbs-domain">Engineering</a><svg viewBox="0 0 5 8" xmlns="http://www.w3.org/2000/svg"><title>Icon Chevron</title><path d="M3 4L0 .9C0 .8 0 .7.1.6L.6.1c.1-.1.2-.1.3 0l3.6 3.8.1.1c0 .1 0 .1-.1.1L.9 7.9c-.1.1-.2.1-.3 0l-.5-.5c-.1-.1-.1-.2 0-.3L3 4z" fill="currentColor" fill-rule="nonzero"></path></svg><a href="https://www.toptal.com/developers/blog/technology" class="blog_post_card__breadcrumbs-topic">Technology</a></div><div class="blog_post_card__title"><h3 class="blog_post_card__title-topic"><a class="blog_post_card__title-link" href="https://www.toptal.com/web/json-vs-xml-part-1">A Deep Look at JSON vs. XML, Part 1: The History of Each Standard</a></h3></div></div></div></div></div></div></aside></div></div></div></article><div class="section has-full_size_width"><div class="section-inner"><div class="blog_post-footer"><div class="blog_post-footer_section is-subscription" data-role="blog_post.footer_subscription"><div class="section has-standard_width is-primary-background"><div class="section-inner"><div class="subscribe_card is-full_width" data-cell="SubscribeForm" data-placement="bottom_banner" data-cell-i-d="22"><div class="subscribe_card-inner"><p class="subscribe_card-title">World-class articles, delivered weekly.</p><div class="subscribe_card-content"><form action="https://www.toptal.com/blog/subscription" class="subscribe_card-form" data-recaptcha="invisible" method="post"><input class="subscribe_card-input" name="blog_subscription[email]" placeholder="Enter your email" role="subscribe_email" type="text"><input name="blog_subscription[vertical]" type="hidden"><div class="recaptcha-container" role="recaptcha-container"><div class="grecaptcha-badge" data-style="none" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;"><div class="grecaptcha-logo"><iframe src="./Creating a Secure REST API in Node.js _ Toptal_files/anchor(2).html" width="256" height="60" role="presentation" name="a-93tx4pw40h64" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-2" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><button name="button" type="submit" class="form_button is-highlight">Sign Me Up</button></form><p class="subscribe_card-disclaimer">Subscription implies consent to our <a href="https://www.toptal.com/privacy">privacy policy</a></p></div></div><div class="subscribe_card-post_roll"><span class="checkmark"></span><p class="subscribe_card-post_roll_text">Thank you!<br>Check out your inbox to confirm your invite.</p></div><button aria-label="Close" class="subscribe_card-hide" data-role="subscribe_section.hide"></button></div></div></div></div><div class="blog_post-footer_section is-subscription is-sticky" data-role="blog_post.footer_subscription_sticky"><div class="section has-standard_width is-primary-background"><div class="section-inner"><div class="subscribe_card is-full_width" data-cell="SubscribeForm" data-placement="bottom_banner_sticky" data-cell-i-d="23"><div class="subscribe_card-inner"><p class="subscribe_card-title">World-class articles, delivered weekly.</p><div class="subscribe_card-content"><form action="https://www.toptal.com/blog/subscription" class="subscribe_card-form" data-recaptcha="invisible" method="post"><input class="subscribe_card-input" name="blog_subscription[email]" placeholder="Enter your email" role="subscribe_email" type="text"><input name="blog_subscription[vertical]" type="hidden"><div class="recaptcha-container" role="recaptcha-container"><div class="grecaptcha-badge" data-style="none" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;"><div class="grecaptcha-logo"><iframe src="./Creating a Secure REST API in Node.js _ Toptal_files/anchor(3).html" width="256" height="60" role="presentation" name="a-dw3jcq2gnqqe" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-3" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><button name="button" type="submit" class="form_button is-highlight">Sign Me Up</button></form><p class="subscribe_card-disclaimer">Subscription implies consent to our <a href="https://www.toptal.com/privacy">privacy policy</a></p></div></div><div class="subscribe_card-post_roll"><span class="checkmark"></span><p class="subscribe_card-post_roll_text">Thank you!<br>Check out your inbox to confirm your invite.</p></div><button aria-label="Close" class="subscribe_card-hide" data-role="subscribe_section.hide"></button></div></div></div></div><div class="blog_post-footer_section"><div class="section has-standard_width has-medium_padding_top"><div class="section-inner"><div class="skill_list is-wide"><h2 class="skill_list-title">Toptal Developers</h2><nav class="skill_list-items"><ul><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/android">Android Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/angular-js">AngularJS Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/back-end">Back-End Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/c-plus-plus">C++ Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/data-analysis">Data Analysts</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/data-engineer">Data Engineers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/data-science">Data Scientists</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/devops">DevOps Engineers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/emberjs">Ember.js Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/freelance">Freelance Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/front-end">Front-End Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/full-stack">Full-Stack Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/html5">HTML5 Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/ios">iOS Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/java">Java Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/javascript">JavaScript Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/machine-learning">Machine Learning Engineers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/magento">Magento Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/mixed-reality">Mixed Reality Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/app">Mobile App Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/dot-net">.NET Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/nodejs">Node.js Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/php">PHP Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/python">Python Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/react">React.js Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/ruby">Ruby Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/ruby-on-rails">Ruby on Rails Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/salesforce">Salesforce Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/scala">Scala Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/software-architect">Software Architects</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/software">Software Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/unity-unity3d">Unity or Unity3D Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/virtual-reality">Virtual Reality Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/web">Web Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link" href="https://www.toptal.com/wordpress">WordPress Developers</a></li><li class="skill_list-item"><a class="skill_list-item_link is-highlighted" href="https://www.toptal.com/developers/all">View more</a></li></ul></nav></div></div></div></div><div class="blog_post-footer_section"><div class="section has-standard_width"><div class="section-inner"><div class="join_cta"><p class="join_cta-title">Join the Toptal<sup>®</sup> community.
+</p><div class="join_cta-buttons"><a href="https://www.toptal.com/hire?interested_in=developers" class="button is-big is-highlight">Hire a Developer</a><span>OR</span><a href="https://www.toptal.com/developers/join" class="button is-big is-highlight">Apply as a Developer</a></div></div></div></div></div><div class="blog_post-footer_section"><div class="section has-full_size_width is-gray-background"><div class="section-inner"><div class="section has-standard_width has-medium_padding_top has-small_padding_bottom"><div class="section-inner"><footer class="footer"><div class="footer-wrapper"><div class="footer-inner"><div class="footer-column"><h3 class="footer-column_header">Most In-Demand Talent</h3><ul class="footer-column_links"><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/ios">iOS Developers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/front-end">Front-End Developers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/designers/ux">UX Designers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/designers/ui">UI Designers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/finance/financial-modeling">Financial Modeling Consultants</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/finance/interim-cfos">Interim CFOs</a></li></ul></div><div class="footer-column"><h3 class="footer-column_header">About</h3><ul class="footer-column_links"><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/top-3-percent">Top 3%</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/clients">Clients</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/developers">Freelance Developers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/designers">Freelance Designers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/finance">Freelance Finance Experts</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/project-managers">Freelance Project Managers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/about">About Us</a></li></ul></div><div class="footer-column"><h3 class="footer-column_header">Contact</h3><ul class="footer-column_links"><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/contact">Contact Us</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/press-center">Press Center</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/careers">Careers</a></li><li class="footer-column_links-item"><a class="footer-column_links-item_link" href="https://www.toptal.com/faq">FAQ</a></li></ul></div><div class="footer-column"><h3 class="footer-column_header is-social">Social</h3><ul class="footer-column_social"><li class="footer-column_social-item"><a class="footer-column_social-item_link" title="LinkedIn" href="https://www.linkedin.com/company/toptal" rel="noopener noreferrer"><span data-cell="DeferredImage" data-cell-options="{&quot;src&quot;:&quot;https://bs-uploads.toptal.io/blackfish-uploads/components/footer_section/content/social_medium/link/icon_file/icon/9401/linkedin-78d88914e52b4b16caa0e49c691136a9.svg&quot;}" class="deferred_image" alt="LinkedIn" data-cell-i-d="24"></span></a></li><li class="footer-column_social-item"><a class="footer-column_social-item_link" title="Twitter" href="https://twitter.com/toptal" rel="noopener noreferrer"><span data-cell="DeferredImage" data-cell-options="{&quot;src&quot;:&quot;https://bs-uploads.toptal.io/blackfish-uploads/components/footer_section/content/social_medium/link/icon_file/icon/9402/twitter-77a108f885ef8b01346ed954cfcca763.svg&quot;}" class="deferred_image" alt="Twitter" data-cell-i-d="25"></span></a></li><li class="footer-column_social-item"><a class="footer-column_social-item_link" title="Facebook" href="https://www.facebook.com/toptal" rel="noopener noreferrer"><span data-cell="DeferredImage" data-cell-options="{&quot;src&quot;:&quot;https://bs-uploads.toptal.io/blackfish-uploads/components/footer_section/content/social_medium/link/icon_file/icon/9403/facebook-0425e11f23cf64bf05a97f9fec941e17.svg&quot;}" class="deferred_image" alt="Facebook" data-cell-i-d="26"></span></a></li><li class="footer-column_social-item"><a class="footer-column_social-item_link" title="Instagram" href="https://www.instagram.com/toptal/" rel="noopener noreferrer"><span data-cell="DeferredImage" data-cell-options="{&quot;src&quot;:&quot;https://bs-uploads.toptal.io/blackfish-uploads/components/footer_section/content/social_medium/link/icon_file/icon/9404/instagram-c5ad49dd6f92fa3fe6d2dc43dbaedac9.svg&quot;}" class="deferred_image" alt="Instagram" data-cell-i-d="27"></span></a></li></ul></div></div></div><div class="footer-wrapper"><div class="footer-inner is-copyright"><div class="footer-logo_wrapper"><a class="footer-logo" href="https://www.toptal.com/"><svg height="32" viewBox="0 0 108 32" width="108" xmlns="http://www.w3.org/2000/svg"><path d="m5.95677289 18.9814054 7.99086731-8.0317838 1.6465752 1.6547027-7.99260991 8.0302703-1.64461477-1.6531892zm15.77087531-5.6356757-13.27803142-13.34270267-2.68518757 2.69837838 4.97871719 5.00324324-10.7431464 10.79481085 13.2775958 13.3433513 2.6851876-2.6983784-4.9787172-5.0058378 10.7437999-10.7930811zm9.153207-9.46681078v4.08821622h4.4186769v2.36086486h-4.4186769v9.1971892c0 2.1152432.5957644 3.3132973 2.3142235 3.3132973.8414764 0 1.3331182-.0709189 1.788818-.211027l.1398467 2.361081c-.5957644.2108109-1.5428882.4227027-2.7350705.4227027-1.4376765 0-2.5950061-.4944864-3.3314886-1.3042162-.8414764-.9513513-1.1921823-2.4665946-1.1921823-4.4763243v-9.3027027h-2.6307301v-2.36108108h2.6307301v-3.17189189l3.0158532-.91589189zm7.5878822 12.65081078c0 3.7362162 2.1035821 6.5543784 5.1200887 6.5543784 2.9459298 0 5.1551594-2.7835676 5.1551594-6.6248649 0-2.8897297-1.4385478-6.51891888-5.0850182-6.51891888-3.6122711 0-5.1902299 3.38291888-5.1902299 6.58940538zm13.430948-.1757838c0 6.3074595-4.3836063 9.0572973-8.4509238 9.0572973-4.5591771 0-8.1359419-3.3837837-8.1359419-8.7751351 0-5.6735135 3.7523356-9.02162161 8.4169423-9.02162161 4.8735054 0 8.1699234 3.55891891 8.1699234 8.73945941zm4.5870593 1.726919c0 .4588108.0348527.8815135.140718 1.2685405.5613473 2.1498378 2.4185639 3.6291892 4.6293183 3.6291892 3.2602581 0 5.1538523-2.6780541 5.1538523-6.5894054 0-3.3831351-1.7879467-6.3081081-5.0488584-6.3081081-2.1048891 0-4.1034772 1.4806486-4.6650423 3.8058378-.104994.3874595-.2099879.8462703-.2099879 1.2330811zm-3.050706-4.5457298c0-2.185081-.0707946-3.94724321-.1400645-5.56799996h2.7344171l.1764421 2.92432436h.0692699c1.2279064-2.07891896 3.2620008-3.27697301 6.032142-3.27697301 4.1378943 0 7.2238886 3.48864861 7.2238886 8.63329731 0 6.1321081-3.7529891 9.1632432-7.7495119 9.1632432-2.2445179 0-4.208689-.9868108-5.2266075-2.678054h-.0692698v9.267027h-3.050706zm21.9868657-9.65621618v4.08821622h4.4180234v2.36086486h-4.4180234v9.1971892c0 2.1152432.5957644 3.3132973 2.3144413 3.3132973.8414764 0 1.3313756-.0709189 1.7879468-.211027l.1405002 2.361081c-.5968536.2108109-1.5435418.4227027-2.7357241.4227027-1.4372408 0-2.5943526-.4944864-3.3306172-1.3042162-.8423477-.9513513-1.1924002-2.4665946-1.1924002-4.4763243v-9.3027027h-2.6307301v-2.36108108h2.6307301v-3.17189189l3.0158532-.91589189zm15.4855184 12.43978378c-3.3672126-.0709189-7.1888181.5284324-7.1888181 3.8417297 0 2.0430271 1.3315934 2.9595676 2.8753529 2.9595676 2.2440823 0 3.6826301-1.4097297 4.1727471-2.8540541.1056475-.3524324.1407181-.7055135.1407181-.987027v-2.96zm2.9807825 4.6162162c0 1.4808649.0699234 2.9251892.244405 4.088h-2.7701412l-.244405-2.1498378h-.1049939c-.9484308 1.3394594-2.7707947 2.5381621-5.1908834 2.5381621-3.437136 0-5.1893586-2.4326486-5.1893586-4.899027 0-4.1232432 3.6473416-6.3783784 10.2040177-6.3433513v-.3517838c0-1.3751352-.385123-3.94724326-3.8579831-3.91200002-1.6130294 0-3.2602581.45794592-4.4530939 1.26832432l-.7007584-2.0787027c1.4015167-.88151351 3.4708995-1.48021621 5.6102057-1.48021621 5.1908834 0 6.4529891 3.55891891 6.4529891 6.94205401zm2.286777 4.088h3.0857765v-25.01989187h-3.0857765zm11.0502867-22.10399998c0 1.61081081-1.303929 2.91891892-2.940702 2.91891892-1.622832 0-2.940702-1.30810811-2.940702-2.91891892 0-1.62464865 1.31787-2.91891892 2.940702-2.91891892 1.636773 0 2.940702 1.29427027 2.940702 2.91891892zm-.485543 0c0-1.36302703-1.095684-2.43697297-2.455159-2.43697297-1.359258 0-2.45516 1.07394594-2.45516 2.43697297 0 1.33556757 1.095684 2.43697297 2.454942 2.43697297 1.359476 0 2.455377-1.1014054 2.455377-2.43697297zm-1.040355 1.67978378h-.624082l-.873933-1.32172973h-.541089v1.32172973h-.513207v-3.34572973h1.373199c.568753 0 1.137507.39935135 1.137507 1.01881081 0 .74356757-.665688.99135136-.859992.99135136l.901815 1.33556756zm-.568536-2.32691892c0-.37189189-.31912-.592-.610576-.592h-.859992v1.15654054h.859992c.291456 0 .610359-.22032432.610359-.56432432z" fill="currentColor" fill-rule="evenodd"></path></svg></a><span class="footer-logo_title">Hire the top 3% of freelance talent</span></div><div class="footer-legal">Copyright 2010 - 2019 Toptal, LLC<ul class="footer-legal_links"><li class="footer-legal_links-item"><a class="footer-legal_links-item_link" href="https://www.toptal.com/privacy">Privacy Policy</a></li><li class="footer-legal_links-item"><a class="footer-legal_links-item_link" href="https://www.toptal.com/tos">Website Terms</a></li></ul></div></div></div></footer></div></div></div></div></div></div></div></div></div><script type="text/javascript" id="">!function(c,d){if(!c.rdt){var a=c.rdt=function(){a.sendEvent?a.sendEvent.apply(a,arguments):a.callQueue.push(arguments)};a.callQueue=[];var b=d.createElement("script");b.src="https://www.redditstatic.com/ads/pixel.js";b.async=!0;var e=d.getElementsByTagName("script")[0];e.parentNode.insertBefore(b,e)}}(window,document);rdt("init","t2_bmqc8");rdt("track","PageVisit");</script>
+
+<script type="text/javascript" id="" src="./Creating a Secure REST API in Node.js _ Toptal_files/5ccca9292f1700000c6a2484"></script><script src="./Creating a Secure REST API in Node.js _ Toptal_files/public_blog_post_js.6b9ad267dbf219d49207.js"></script><div style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.21131112510196215"><img style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.21891034898605288" width="0" height="0" alt="" src="./Creating a Secure REST API in Node.js _ Toptal_files/0"></div><div class="vendor_scripts"><script async="true" src="./Creating a Secure REST API in Node.js _ Toptal_files/js"></script><script>if (typeof(window.Widgets) !== 'undefined') {
+  var trackingId = 'UA-21104039-1'
+
+  if (trackingId.length && !(window.googleAnalytics instanceof Widgets.GoogleAnalytics)) {
+    window.googleAnalytics = new Widgets.GoogleAnalytics(
+      trackingId,
+      false
+    )
+  }
+}</script><script>if (!window.analytics) {
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["setAnonymousId", "trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+  analytics.load('jnS4QsHOCAOeG6XvMDCjD9n9bAcQ53Mb');
+  }}();
+}
+(function() {
+  function readVisitorIdCookie() {
+    var cookieName = 'visitor_id=';
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].replace(/^\s+|\s+$/g, '');
+      if (cookie.indexOf(cookieName) === 0) {
+        return cookie.split('=')[1];
+      }
+    }
+  }
+  analytics.setAnonymousId(readVisitorIdCookie());
+  window.SegmentSettings = {
+    shouldIdentify: true,
+    controllerName: 'posts',
+    actionName: 'blog_post'
+  };
+})();</script><script async="" defer="" id="hs-script-loader" src="./Creating a Secure REST API in Node.js _ Toptal_files/2799924(1).js" type="text/javascript"></script><script>var _hsq = window._hsq = window._hsq || [];</script><script>!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', "463369723801939");
+fbq('track', 'ViewContent');</script><noscript><img height="1" src="https://www.facebook.com/tr?id=463369723801939&amp;ev=ViewContent&amp;noscript=1" width="1" /></noscript><iframe frameborder="0" height="1" scrolling="no" src="./Creating a Secure REST API in Node.js _ Toptal_files/account_visit.html" width="1"></iframe><script>(function(A, d, S, t, a, g, e) {
+  A['AdstageAnalytics'] = a;
+  A[a] = A[a] || function() {
+    (A[a].q = A[a].q || []).push(arguments)
+  };
+  A[a].l = 1 * new Date();
+  g = d.createElement(S), e = d.getElementsByTagName(S)[0];
+  g.async = 1;
+  g.src = t;
+  e.parentNode.insertBefore(g, e);
+})(window, document, 'script', '//assets.adstage.io/analytics.js', '_as');
+_as('create', "e2dd65eb-07a1-4d93-874a-fe6dac5a8b64");
+_as('send', 'pageview');</script><script>_bizo_data_partner_id = "8663";
+(function() {
+  var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";
+  b.async = true;
+  b.src = (window.location.protocol === "https:" ? "https://sjs" : "http://js") + ".bizographics.com/insight.min.js";
+  s.parentNode.insertBefore(b, s);
+})();</script><noscript><img alt="" height="1" src="//www.bizographics.com/collect/?pid=8663&amp;fmt=gif" style="display:none;" width="1" /></noscript></div><script src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource" type="text/javascript"></script><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Creating a Secure REST API in Node.js _ Toptal_files/widget_iframe.940e1bc455d9af25d6ec2f14e90d0d6c.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe style="display: none;" src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource(5).html"></iframe><script type="text/javascript" src="./Creating a Secure REST API in Node.js _ Toptal_files/px"></script><script type="text/javascript" src="./Creating a Secure REST API in Node.js _ Toptal_files/saved_resource(1)"></script><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: absolute; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255); overflow: hidden;"><iframe title="hình xác thực recaptcha" src="./Creating a Secure REST API in Node.js _ Toptal_files/bframe.html" name="c-sv80ur7x0xr1" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: absolute; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255); overflow: hidden;"><iframe title="hình xác thực recaptcha" src="./Creating a Secure REST API in Node.js _ Toptal_files/bframe(1).html" name="c-9qzt1upqst0n" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: absolute; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255); overflow: hidden;"><iframe title="hình xác thực recaptcha" src="./Creating a Secure REST API in Node.js _ Toptal_files/bframe(2).html" name="c-93tx4pw40h64" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: absolute; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255); overflow: hidden;"><iframe title="hình xác thực recaptcha" src="./Creating a Secure REST API in Node.js _ Toptal_files/bframe(3).html" name="c-dw3jcq2gnqqe" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div></body></html>

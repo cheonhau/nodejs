@@ -1,0 +1,14 @@
+{
+  "name": "add_edit_only_nodejs",
+  "version": "1.0.0",
+  "description": "demo 1",
+  "main": "main.js",
+  "scripts": {
+    "test": "xyz"
+  },
+  "author": "huy nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
