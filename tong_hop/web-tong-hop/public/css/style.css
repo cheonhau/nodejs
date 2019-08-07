@@ -1,0 +1,37 @@
+.oth-form-container {
+    width: 90%;
+    margin: 1vw auto;
+    min-height: 300px;
+    box-shadow: 0px 0px 3px 0px #666650;
+    border-radius: 4px;
+}
+.oth-form-table {
+    width: 90%;
+    margin: auto;
+    padding: 3vw 0;
+}
+.oth-form-table-header {
+    margin-bottom: 1vw;
+    overflow: hidden;
+}
+table {
+    text-align: center;
+}
+.oth-form-table .btn {
+    cursor: pointer;
+}
+table .fa-edit {
+    color: #4dabf7;
+    cursor: pointer;
+}
+table .fa-trash-alt {
+    color: red;
+    cursor: pointer;
+}
+table img {
+    width: 5vw;
+    height: 5vw;
+}
+table thead {
+    border-top: solid 7px #f1c40f;
+}

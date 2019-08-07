@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<div class="container-fluid">
+    <div class="oth-form-container">
+        <div class="oth-form-table">
+            <div class="oth-form-table-header">
+                <div class="btn btn-info float-right oth-simple-add" data-toggle="modal" data-target="#ActionModal">
+                    Add Item
+                </div>
+            </div>
+            <div class="oth-form-table-main">
+                <table class="table table-hover table-bordered">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <thead>
+                        <tr class="table-active">
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">BirthDay</th>
+                            <th scope="col">Image</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>ng.huy.uit@gmail.com</td>
+                            <td>20/09/2019</td>
+                            <td><img src="images/bai-bien.jpg" alt=""></td>
+                            <td><i class="fas fa-edit oth-simple-edit" data-id="1"></i></td>
+                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>nhh.uit@gmail.com</td>
+                            <td>24/06/1997</td>
+                            <td><img src="images/gai-xinh-1.jpg" alt=""></td>
+                            <td><i class="fas fa-edit oth-simple-edit" data-id="2"></i></td>
+                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>baby@gmail.com</td>
+                            <td>20/06/1998</td>
+                            <td><img src="images/bai-bien.jpg" alt=""></td>
+                            <td><i class="fas fa-edit oth-simple-edit" data-id="3"></i></td>
+                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/simple/modal-add-edit.ejs') %>
+<%- include('../partials/simple/modal-delete.ejs') %> 
+<%- include('../partials/footer.ejs') %> 
