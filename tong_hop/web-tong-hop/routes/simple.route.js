@@ -24,5 +24,13 @@ router.get('/edit', [
     ensureAuthenticated, //
     simpleController.simpleViewEdit
 ]);
+router.post('/add', [
+    ensureAuthenticated,
+    simpleController.simplePostAdd
+]);
+router.post('/edit', [
+    ensureAuthenticated,
+    simpleController.simplePostEdit
+]);
 
 module.exports = router;

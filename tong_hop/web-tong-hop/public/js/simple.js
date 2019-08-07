@@ -8,7 +8,7 @@ $('.oth-simple-edit').on('click', function () {
     $('#simple-form-people').attr('action', window.location.origin + '/simple/edit');
     let id = $(this).attr('data-id');
     // ajax de lay thong tin show len form
-    $('#simple-form-people').modal('show');
+    $('#ActionModal').modal('show');
 });
 // action delete 
 $('.oth-simple-delete').on('click', function () {
@@ -19,4 +19,11 @@ $('.oth-simple-delete').on('click', function () {
 $('.oth-delete-people').on('click', function () {
     let id = $(this).attr('data-id');
     // ajax de xoa
-})
+});
+$('#birth-day').datepicker({
+    format: 'yyyy-mm-dd',
+    keyboardNavigation: false,
+    forceParse: false,
+    calendarWeeks: true,
+    autoclose: true,
+});

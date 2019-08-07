@@ -35,3 +35,14 @@ table img {
 table thead {
     border-top: solid 7px #f1c40f;
 }
+#simple-form-people .form-group, #simple-form-people .custom-radio {
+    float: left;
+}
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.no-margin {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}

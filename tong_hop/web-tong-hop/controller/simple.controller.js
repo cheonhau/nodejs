@@ -11,3 +11,9 @@ exports.simpleViewAdd = (req, res) => {
 exports.simpleViewEdit = (req, res) => {
     res.render('simples/edit');
 }
+exports.simplePostAdd = (req, res) => {
+
+}
+exports.simplePostEdit = (req, res) => {
+    
+}

@@ -2,46 +2,63 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Info People</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Info People</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form method="post" id="simple-form-people" action="/simple/add" enctype="multipart/form-data">
-          <div class="form-group">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div class="form-group col-sm-6 col-12">
             <label for="name" class="col-form-label">Your Name:</label>
             <input type="text" class="form-control" id="name" name="name">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="email" class="col-form-label">Your Email:</label>
             <input type="text" class="form-control" id="email" name="email">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="password" class="col-form-label">Your Password:</label>
             <input type="text" class="form-control" id="password" name="password">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="confirm-password" class="col-form-label">Confirm Password:</label>
-            <input type="text" class="form-control" id="confirm-password" name="confirm-password">
+            <input type="text" class="form-control" id="confirm-password" name="confirm_password">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="birth-day" class="col-form-label">Your BirthDay:</label>
-            <input type="text" class="form-control" id="birth-day" name="birth-day">
+            <input type="text" class="form-control js-date" id="birth-day" name="birth-day">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="image" class="col-form-label">Image Personal:</label>
-            <input type="file" class="form-control" id="image" name="image">
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image" name="image">
+                <label class="custom-file-label" for="image">Choose file</label>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-6 col-12">
             <label for="note" class="col-form-label">Your introduce:</label>
             <textarea class="form-control" id="note" name="note"></textarea>
+          </div>
+          <div class="form-group col-sm-6 col-12">
+            <label for="male" class="col-form-label col-sm-12 col-12 no-padding">Your Gender:</label>
+            <div class="custom-control custom-radio col-sm-6 col-12">
+              <input type="radio" id="male" name="gender" class="custom-control-input" checked="">
+              <label class="custom-control-label" for="male">Male</label>
+            </div>
+            <div class="custom-control custom-radio col-sm-6 col-12">
+              <input type="radio" id="female" name="gender" class="custom-control-input">
+              <label class="custom-control-label" for="female">FeMale</label>
+            </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary oth-action-people">Send message</button>
+        <button type="button" class="btn btn-primary oth-action-people">OK</button>
       </div>
     </div>
   </div>

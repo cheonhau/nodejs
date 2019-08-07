@@ -35,10 +35,12 @@ exports.registerUser = (req, res) => {
 }
 exports.loginUser = (req, res, next) => {
     passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: req.session.returnTo || '/dashboard',
     failureRedirect: '/users/login',
     failureFlash: true
     })(req, res, next);
+    // xóa session redirect trước đó lưu dùng để redirect sau khi login
+    delete req.session.returnTo;
 }
 exports.logOutUser = (req, res) => {
     req.logout();
