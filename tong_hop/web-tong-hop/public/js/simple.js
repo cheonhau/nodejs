@@ -27,3 +27,7 @@ $('#birth-day').datepicker({
     calendarWeeks: true,
     autoclose: true,
 });
+$('.oth-action-people').on('click', function () {
+    console.log('kaka')
+    $('#simple-form-people').submit();
+});
