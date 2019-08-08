@@ -2,23 +2,23 @@
 
 exports.validationAdd = (req, res, next) => {
     req.pipe(req.busboy);
-    var fields = [];
+    let fields = {};
+
     req.busboy.on('field', function(fieldname, val) {
-        let obj = {};
-        obj[fieldname] = val;
-        fields.push( obj );
+        fields[fieldname] = val;
     });
-    req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-        console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+    // req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+    //     console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
         
-    });
+    // });
     req.busboy.on('finish', () => {
-        
-        console.log(fields);
+        let { name, email, password, confirm_password, birthDay, note, image, gender } = fields;
+        console.log(name);
     });
     if ( req.body.constructor === Object && Object.keys(req.body).length === 0 ) {
-        console.log('haha');
-        res.render('simples/list');
+        console.log('vao day');
+        req.flash('error_msg', 'co mot cai loi<br> ai da tao ra cai loi <br>');
+        res.redirect('/simple');
     } else {
         console.log('hihi');
         let errors = [];

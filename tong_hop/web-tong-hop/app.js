@@ -6,12 +6,17 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // require debug
 require('./debug/config');
 console.loginfo('ghi log bug');
 
 const app = express();
+
+// use form multipart
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // we need this because "cookie" is true in csrfProtection
 app.use(cookieParser());
