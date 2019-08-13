@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    birthDay : {
+    birth_day : {
         type : Date,
         required : true
     },
@@ -36,5 +36,10 @@ const UserSchema = new mongoose.Schema({
     }
 });
 const Simple = mongoose.model('Simple', UserSchema);
+
+exports.createSimple = (Data) => {
+    let simple = new Simple(Data);
+    return simple.save();
+}
 
 module.exports = Simple;

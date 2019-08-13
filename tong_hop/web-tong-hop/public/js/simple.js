@@ -1,6 +1,6 @@
 // action add
 $('.oth-simple-add').on('click', function () {
-    $('#simple-form-people')[0].reset();
+    // $('#simple-form-people')[0].reset();
     $('#simple-form-people').attr('action', window.location.origin + '/simple/add');
 });
 // action edit
@@ -20,7 +20,7 @@ $('.oth-delete-people').on('click', function () {
     let id = $(this).attr('data-id');
     // ajax de xoa
 });
-$('#birth-day').datepicker({
+$('#birth_day').datepicker({
     format: 'yyyy-mm-dd',
     keyboardNavigation: false,
     forceParse: false,
