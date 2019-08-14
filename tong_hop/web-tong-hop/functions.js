@@ -45,6 +45,13 @@ exports.validateTypeImage = (fileType) => {
     }
     return true;
 }
+// validate fiedl only enter some character
+exports.validateFieldNotCharacterSpecial = (field) => {
+    if( /[^a-zA-Z0-9\-\_\/\\]/.test( field ) ) {
+        return false;
+    }
+    return true;
+}
 // create name file from filename
 exports.createNameFileFromNameFile = (nameFile) => {
     var array_name_file = nameFile.split('.');

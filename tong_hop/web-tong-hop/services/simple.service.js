@@ -1,6 +1,6 @@
 const Simple = require('../models/Simple');
 const functions = require('../functions');
-
+const inspect = require('util').inspect;
 // validation 
 exports.validationAdd = (fields) => {
     let errors = [];
@@ -17,6 +17,9 @@ exports.validationAdd = (fields) => {
     if ( !functions.validateDate(birth_day) ) {
         errors.push({ msg : 'Your birth day is not date' });
     }
+    // if ( !functions.validateFieldNotCharacterSpecial(name) || !functions.validateFieldNotCharacterSpecial(password) || !functions.validateFieldNotCharacterSpecial(birth_day) || !functions.validateFieldNotCharacterSpecial(gender) ) {
+    //     errors.push ({ msg : 'The value of field only accept word : abc.., -, _' });
+    // }
     return errors;
 }
 exports.validationAddImage = (mimetype) => {
@@ -35,3 +38,27 @@ exports.createSimple = (data) => {
 exports.hashPasswordSimple = (pwd) => {
     return functions.hashPassword(pwd);
 }
+// find email
+exports.findEmail = (email) => {
+    return Simple.find({email : email});
+}
+// login verify user login
+exports.isPasswordAndUserMatch = (email, password) => {
+    Simple.find({ email : email })
+        .then((user)=>{
+            let errors = [];
+            if(!user[0]){
+                errors.push({ msg : 'Email not exist' });
+            }else{
+                let passwordFields = user[0].password.split('$');
+                let salt = passwordFields[0];
+                let hash = crypto.createHmac('sha512', salt).update(password).digest("base64");
+                if (hash === passwordFields[1]) {
+                    return user;
+                } else {
+                    errors.push({ msg : 'Invalid e-mail or password' });
+                }
+            }
+            return errors;
+        });
+};

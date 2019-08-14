@@ -3,7 +3,7 @@ const router = express.Router();
 // Load User model, controller, validation
 const { forwardAuthenticated } = require('../config/auth');
 const userController = require('../controller/users.controller');
-const userValidation = require('../validations/users.validation');
+const userService = require('../services/users.service');
 
 // Login Page
 router.get('/login', [
@@ -18,7 +18,7 @@ router.get('/register', [
     userController.registerView
 ]);
 router.post('/register', [
-    userValidation.validationRegister, // dùng để validation form register 
+    userService.validationRegister, // dùng để validation form register 
     userController.registerUser
 ]);
 

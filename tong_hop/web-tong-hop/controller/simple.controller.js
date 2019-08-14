@@ -1,7 +1,7 @@
 const Busboy = require('busboy');
 
 const fs = require('fs-extra');
-const simpleService = require('../validations/simple.service');
+const simpleService = require('../services/simple.service');
 // cần làm tiếp : email không được trùng lặp và validation string nodejs
 exports.simpleViewList = (req, res) => {
     res.render('simples/list');
@@ -42,7 +42,6 @@ exports.simplePostAdd = (req, res) => {
         // kiểm tra field required, email ...
         errors = simpleService.validationAdd(fields);
         if ( errors.length > 0 ) {
-            console.log(fields, ':line 24');
             req.flash('error_view', errors);
             req.flash('result_view', fields);
 
@@ -56,6 +55,16 @@ exports.simplePostAdd = (req, res) => {
 
             res.redirect('/simple'); return ;
         }
+        // validate email không bị trùng 
+        simpleService.findEmail(fields.email).then( (result) => {
+            if (result.length > 0) {
+                errors.push({ msg : 'The Email has already, please check again !' });
+                req.flash('error_view', errors);
+                req.flash('result_view', fields);
+
+                res.redirect('/simple'); return ;
+            }
+        });
         // console.log(process.env.PWD, process.cwd()); upload ảnh và save tới database 
         file_name = new Date().getTime().toString() + Math.floor(Math.random() * 1000) + 1 + '.' + filenameUpload.split('.')[1];
         fstream = fs.createWriteStream( process.cwd() + '/public/images/' + file_name);

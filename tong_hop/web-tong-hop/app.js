@@ -11,7 +11,6 @@ const util = require("util");
 
 // require debug
 require('./debug/config');
-console.loginfo('ghi log bug');
 
 const app = express();
 
