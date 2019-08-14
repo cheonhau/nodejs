@@ -62,3 +62,24 @@ exports.isPasswordAndUserMatch = (email, password) => {
             return errors;
         });
 };
+// find by id for edit
+exports.findById = (id) => {
+    return Simple.findById(id).then( (result) => {
+        delete result._id;
+        delete result.__v;
+
+        return result;
+    })
+}
+// delete by id
+exports.deleteById = (id) => {
+    return new Promise( (resolve, reject) => {
+        Simple.remove({id : id}, (err, simple) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(simple);
+            }
+        })
+    })
+}
