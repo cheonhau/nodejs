@@ -65,11 +65,35 @@ exports.isPasswordAndUserMatch = (email, password) => {
 // find by id for edit
 exports.findById = (id) => {
     return Simple.findById(id).then( (result) => {
-        delete result._id;
-        delete result.__v;
-
         return result;
-    })
+    });
+}
+// edit by id
+exports.patchSimple = (id, simpleData) => {
+    return new Promise( (resolve, reject) => {
+        Simple.findById(id, function (err, simple) {
+            if (err) reject(err);
+            for (let i in simpleData) {
+                simple[i] = simpleData[i];
+            }
+            simple.save(function(err, updateSimple){
+                if (err) reject(err);
+                resolve(updateSimple);
+            });
+        });
+    });
+}
+//get lish simple : page -> hiện tại số trang là bao nhiêu, perpage -> số lượng item trên mỗi trang 
+exports.getList = (perpage, page) => {
+    return new Promise( (resolve, reject) => {
+        Simple.find()
+                .limit(perpage)
+                .skip(perpage*page)
+                .exec( function(err, simple) {
+                    if (err) reject(err);
+                    resolve(simple);
+                });
+    });
 }
 // delete by id
 exports.deleteById = (id) => {

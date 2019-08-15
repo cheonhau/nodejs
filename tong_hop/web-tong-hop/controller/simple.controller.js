@@ -4,7 +4,21 @@ const fs = require('fs-extra');
 const simpleService = require('../services/simple.service');
 // cần làm tiếp : email không được trùng lặp và validation string nodejs
 exports.simpleViewList = (req, res) => {
-    res.render('simples/list');
+    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    let simples = {};
+    if (req.query && req.query.page) {
+        req.query.page = parseInt(req.query.page);
+        page = Number.isInteger(req.query.page) ? req.query.page : 0;
+    }
+    simpleService.getList(limit, page).then(
+        (result) => {
+            simples = result;
+            res.render('simples/list');
+        }
+    ).catch (err => {
+        res.render('simples/list');
+    });
 }
 exports.simplePostAdd = (req, res) => {
     let fields = {};
