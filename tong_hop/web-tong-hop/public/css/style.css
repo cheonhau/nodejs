@@ -2,7 +2,7 @@
     width: 90%;
     margin: 1vw auto;
     min-height: 300px;
-    box-shadow: 0px 0px 3px 0px #666650;
+    box-shadow: 0px 0px 3px 0px #EB6864;
     border-radius: 4px;
 }
 .oth-form-table {
@@ -33,7 +33,7 @@ table img {
     height: 5vw;
 }
 table thead {
-    border-top: solid 7px #f1c40f;
+    border-top: solid 7px #EB6864;
 }
 #simple-form-people .form-group, #simple-form-people .custom-radio {
     float: left;

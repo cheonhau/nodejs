@@ -6,19 +6,20 @@ const simpleService = require('../services/simple.service');
 exports.simpleViewList = (req, res) => {
     let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
     let page = 0;
-    let simples = {};
     if (req.query && req.query.page) {
         req.query.page = parseInt(req.query.page);
         page = Number.isInteger(req.query.page) ? req.query.page : 0;
     }
-    simpleService.getList(limit, page).then(
-        (result) => {
-            simples = result;
-            res.render('simples/list');
-        }
-    ).catch (err => {
-        res.render('simples/list');
-    });
+    console.log(limit, page);
+    // simpleService.getList(limit, page).then(
+    //     (result) => {
+    //         simples = result;
+    //         res.render('simples/list');
+    //     }
+    // ).catch (err => {
+    //     res.render('simples/list');
+    // });
+    res.render('simples/list');
 }
 exports.simplePostAdd = (req, res) => {
     let fields = {};
