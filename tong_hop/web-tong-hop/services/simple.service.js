@@ -83,27 +83,33 @@ exports.patchSimple = (id, simpleData) => {
         });
     });
 }
-//get lish simple : page -> hiện tại số trang là bao nhiêu, perpage -> số lượng item trên mỗi trang 
-exports.getList = (perpage, page) => {
-    return new Promise( (resolve, reject) => {
-        Simple.find()
+//get lish simple : page -> hiện tại số trang là bao nhiêu, min = 1, perpage -> số lượng item trên mỗi trang 
+exports.getList = async (perpage, page) => {
+    try {
+        let simple = await Simple.find()
                 .limit(perpage)
-                .skip(perpage*page)
-                .exec( function(err, simple) {
-                    if (err) reject(err);
-                    resolve(simple);
-                });
-    });
+                .skip( perpage * (page -1) )
+                .exec();
+        return simple;
+    } catch (error) {
+        console.log(error);
+    }
+}
+// get list count 
+exports.countList = async () => {
+    try {
+        let count = await Simple.countDocuments({});
+        return count;   
+    } catch (error) {
+        console.log(error);
+    }
 }
 // delete by id
-exports.deleteById = (id) => {
-    return new Promise( (resolve, reject) => {
-        Simple.remove({id : id}, (err, simple) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(simple);
-            }
-        })
-    })
+exports.deleteById = async (id) => {
+    try {
+        let simple = await Simple.find({id : id}).remove().exec();
+        return simple;
+    } catch (error) {
+        console.log(error);
+    }
 }

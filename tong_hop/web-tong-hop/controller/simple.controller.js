@@ -3,23 +3,33 @@ const Busboy = require('busboy');
 const fs = require('fs-extra');
 const simpleService = require('../services/simple.service');
 // cần làm tiếp : email không được trùng lặp và validation string nodejs
-exports.simpleViewList = (req, res) => {
-    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
-    let page = 0;
+exports.simpleViewList = async (req, res) => {
+    // let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let limit = 2;
+    let page = 1;
+    let totalItem = 0;
+    let current_url = req.protocol + '://' + req.get('host') + req.baseUrl;
+    let simples;
+    // console.log(req.protocol, req.get('host'), req.originalUrl, req.headers.host, req.baseUrl, req.path, current_url);
+    // get current page
     if (req.query && req.query.page) {
         req.query.page = parseInt(req.query.page);
-        page = Number.isInteger(req.query.page) ? req.query.page : 0;
+        page = Number.isInteger(req.query.page) ? req.query.page : 1;
     }
-    console.log(limit, page);
-    // simpleService.getList(limit, page).then(
-    //     (result) => {
-    //         simples = result;
-    //         res.render('simples/list');
-    //     }
-    // ).catch (err => {
-    //     res.render('simples/list');
-    // });
-    res.render('simples/list');
+    // total number list
+    totalItem = simpleService.countList();
+    simples = simpleService.getList(limit, page);
+
+    await Promise.all([totalItem, simples]).then( (values) => {
+        totalItem = values[0];
+        res.render('simples/list', {
+            simples, totalItem, limit, page, current_url
+        });
+        console.log('xong');
+    });
+    
+        
+    // res.render('simples/list');
 }
 exports.simplePostAdd = (req, res) => {
     let fields = {};
