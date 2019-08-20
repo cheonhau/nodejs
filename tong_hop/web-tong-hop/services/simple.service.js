@@ -107,8 +107,14 @@ exports.countList = async () => {
 // delete by id
 exports.deleteById = async (id) => {
     try {
-        let simple = await Simple.find({id : id}).remove().exec();
-        return simple;
+        let simple = await Simple.findOne({_id : id});
+        let image = simple.image;
+        let result = await Simple.deleteOne({_id : id});
+        // let result = await simple.remove().exec();
+        if (result.ok === 1) {
+            return image;
+        }
+        return 'fail';
     } catch (error) {
         console.log(error);
     }

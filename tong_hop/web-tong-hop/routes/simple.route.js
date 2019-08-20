@@ -5,9 +5,6 @@ const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 const simpleController = require('../controller/simple.controller');
 
-// use busboy to upload file
-// const busboy = require('busboy');
-// router.use(busboy());
 // list simple
 router.get('/', [
     ensureAuthenticated, // đảm bảo đã login
@@ -20,6 +17,10 @@ router.post('/add', [
 router.post('/edit', [
     ensureAuthenticated,
     simpleController.simplePostEdit
+]);
+router.post('/delete', [
+    ensureAuthenticated,
+    simpleController.simplePostDelete
 ]);
 
 module.exports = router;

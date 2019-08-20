@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/functions.ejs') %>
+<%- include('../partials/loading.ejs') %>
 <pre><%= inspect() %></pre>
 <div class="container-fluid">
     <div class="oth-form-container">
@@ -29,10 +30,10 @@
                         <th scope="row">1</th>
                             <td><%= simple.name %></td>
                             <td><%= simple.email %></td>
-                            <td><%= simple.birth_day %></td>
+                            <td><%= formatDate(simple.birth_day); %></td>
                             <td><img src="images/<%= simple.image %>" alt=""></td>
                             <td><i class="fas fa-edit oth-simple-edit" data-id="1"></i></td>
-                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
+                            <td><i class="fas fa-trash-alt oth-simple-delete" data-id="<%= simple._id %>"></i></td>
                         </tr>
                         <tr>
                         <% }) %>

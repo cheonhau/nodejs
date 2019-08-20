@@ -127,3 +127,17 @@ exports.simplePostAdd = (req, res) => {
 exports.simplePostEdit = (req, res) => {
     
 }
+exports.simplePostDelete = (req, res) => {
+    console.log(req.body);
+    let id = req.body.id;
+    simpleService.deleteById(id).then(result => {
+        if (result === 'fail') {
+            return res.send({'success' : 'fail'});
+        }
+        // delete image
+        let path_image_uploaded = process.cwd() + '/public/images/' + result;
+        fs.unlink(path_image_uploaded, function() {
+            return res.send({'success' : 'true'});
+        });
+    });
+}
