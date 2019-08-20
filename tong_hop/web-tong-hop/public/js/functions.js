@@ -49,3 +49,21 @@ function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+loadData = async (method_to, path_to) => {
+	try {
+		let url = window.location.origin + path_to;
+		let settings = {
+			method : method_to,
+			headers : {
+				Accept : 'application/json',
+				'Content-Type' : 'application/json'
+			}
+		}
+		let fetch = await fetch(url, settings);
+		let data = await fetch;
+		return data;
+	} catch (error) {
+		
+	}
+}

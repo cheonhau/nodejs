@@ -21,11 +21,12 @@ exports.simpleViewList = async (req, res) => {
     simples = simpleService.getList(limit, page);
 
     await Promise.all([totalItem, simples]).then( (values) => {
-        totalItem = values[0];
+        totalItem = values[0]; simples = values[1];
         res.render('simples/list', {
             simples, totalItem, limit, page, current_url
         });
-        console.log('xong');
+    }).catch(err => {
+        console.log(err);
     });
     
         
@@ -34,67 +35,70 @@ exports.simpleViewList = async (req, res) => {
 exports.simplePostAdd = (req, res) => {
     let fields = {};
     let errors = [];
-    let filenameUpload;
-    let fileUpload;
-    let mimetypeUpload;
+    let file_name;
+    let error_file = false;
     var busboy = new Busboy({ 
         headers: req.headers,
         limits: {
-            fileSize : 1*1024*1024
+            fileSize : 100*1024*1024
         } 
     });
     busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
         fields[fieldname] = val;
     });
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-        fileUpload = file;
-        mimetypeUpload = mimetype;
-        filenameUpload = filename;
+        // console.log(process.env.PWD, process.cwd()); 
+        // kiểm tra co dung la anh khong
+        errors = simpleService.validationAddImage(mimetype);
+        if ( errors.length > 0 ) {
+            req.flash('error_view', errors);
+            req.flash('result_view', fields);
+
+            res.redirect('/simple'); return ;
+        }
+        file_name = new Date().getTime().toString() + Math.floor(Math.random() * 1000) + 1 + '.' + filename.split('.')[1];
+        let path_upload = process.cwd() + '/public/images/' + file_name;
+        fstream = fs.createWriteStream( path_upload );
+        file.pipe(fstream);
+        fstream.on('close', function () {    
+        });
 
         file.on('data', function(data) {});
+        // kiểm tra lỗi dung lượng file
         file.on('limit', function(){
-            errors.push({msg : 'The file no longer 1 mb.'});
+            error_file = true;
+            // delete file
+            fs.unlink(path_upload, function () {
+                errors.push({msg : 'The file no longer 1 mb.'});
+            });
+        });
+        
+        file.on('end', function() {
         });
     });
     busboy.on('finish', function() {
-        // kiểm tra lỗi dung lượng file
-        if ( errors.length > 0 ) {
-            req.flash('error_view', errors);
-            req.flash('result_view', fields);
-
-            res.redirect('/simple'); return ;
-        }
-        // kiểm tra field required, email ...
-        errors = simpleService.validationAdd(fields);
-        if ( errors.length > 0 ) {
-            req.flash('error_view', errors);
-            req.flash('result_view', fields);
-
-            res.redirect('/simple'); return ;
-        }
-        // kiểm tra co dung la anh khong
-        errors = simpleService.validationAddImage(mimetypeUpload);
-        if ( errors.length > 0 ) {
-            req.flash('error_view', errors);
-            req.flash('result_view', fields);
-
-            res.redirect('/simple'); return ;
-        }
-        // validate email không bị trùng 
-        simpleService.findEmail(fields.email).then( (result) => {
-            if (result.length > 0) {
-                errors.push({ msg : 'The Email has already, please check again !' });
+        // check if file no wrong limit size
+        if ( !error_file ) {
+            // kiểm tra field required, email ...
+            errors = simpleService.validationAdd(fields);
+            if ( errors.length > 0 ) {
                 req.flash('error_view', errors);
                 req.flash('result_view', fields);
 
                 res.redirect('/simple'); return ;
             }
-        });
-        // console.log(process.env.PWD, process.cwd()); upload ảnh và save tới database 
-        file_name = new Date().getTime().toString() + Math.floor(Math.random() * 1000) + 1 + '.' + filenameUpload.split('.')[1];
-        fstream = fs.createWriteStream( process.cwd() + '/public/images/' + file_name);
-        fileUpload.pipe(fstream);
-        fstream.on('close', function () {    
+            
+            // validate email không bị trùng 
+            simpleService.findEmail(fields.email).then( (result) => {
+                if (result.length > 0) {
+                    errors.push({ msg : 'The Email has already, please check again !' });
+                    req.flash('error_view', errors);
+                    req.flash('result_view', fields);
+
+                    res.redirect('/simple'); return ;
+                }
+            });
+            // save tới database 
             fields['image'] = file_name; 
             fields['password'] = simpleService.hashPasswordSimple( fields.password );
             simpleService.createSimple(fields)
@@ -109,7 +113,14 @@ exports.simplePostAdd = (req, res) => {
                     console.log(err);
                     res.redirect('/simple');
                 });
-        });
+        } else {
+            if ( errors.length > 0 ) {
+                req.flash('error_view', errors);
+                req.flash('result_view', fields);
+
+                res.redirect('/simple'); return ;
+            }
+        }
     });
     req.pipe(busboy);
 }

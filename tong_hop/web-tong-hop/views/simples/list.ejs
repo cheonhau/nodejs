@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/functions.ejs') %>
-<pre><%= inspect(result_view[0]) %></pre>
+<pre><%= inspect() %></pre>
 <div class="container-fluid">
     <div class="oth-form-container">
         <div class="oth-form-table">
@@ -24,33 +24,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% simples.forEach(simple => { %>
                         <tr>
                         <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>ng.huy.uit@gmail.com</td>
-                            <td>20/09/2019</td>
-                            <td><img src="images/bai-bien.jpg" alt=""></td>
+                            <td><%= simple.name %></td>
+                            <td><%= simple.email %></td>
+                            <td><%= simple.birth_day %></td>
+                            <td><img src="images/<%= simple.image %>" alt=""></td>
                             <td><i class="fas fa-edit oth-simple-edit" data-id="1"></i></td>
                             <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
                         </tr>
                         <tr>
-                        <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>nhh.uit@gmail.com</td>
-                            <td>24/06/1997</td>
-                            <td><img src="images/gai-xinh-1.jpg" alt=""></td>
-                            <td><i class="fas fa-edit oth-simple-edit" data-id="2"></i></td>
-                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>baby@gmail.com</td>
-                            <td>20/06/1998</td>
-                            <td><img src="images/bai-bien.jpg" alt=""></td>
-                            <td><i class="fas fa-edit oth-simple-edit" data-id="3"></i></td>
-                            <td><i class="fas fa-trash-alt oth-simple-delete"></i></td>
-                        </tr>
+                        <% }) %>
                     </tbody>
                 </table>
             </div>
