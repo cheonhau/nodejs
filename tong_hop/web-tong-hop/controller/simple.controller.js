@@ -128,7 +128,6 @@ exports.simplePostEdit = (req, res) => {
     
 }
 exports.simplePostDelete = (req, res) => {
-    console.log(req.body);
     let id = req.body.id;
     simpleService.deleteById(id).then(result => {
         if (result === 'fail') {
@@ -139,5 +138,11 @@ exports.simplePostDelete = (req, res) => {
         fs.unlink(path_image_uploaded, function() {
             return res.send({'success' : 'true'});
         });
+    });
+}
+exports.simpleGetOneInfo = (req, res) => {
+    let id = req.body.id;
+    simpleService.findById(id).then( result => {
+        return res.send({simple : result});
     });
 }

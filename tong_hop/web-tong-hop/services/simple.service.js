@@ -63,10 +63,13 @@ exports.isPasswordAndUserMatch = (email, password) => {
         });
 };
 // find by id for edit
-exports.findById = (id) => {
-    return Simple.findById(id).then( (result) => {
-        return result;
-    });
+exports.findById = async (id) => {
+    try {
+        let simple = await Simple.findById(id);
+        return simple;
+    } catch (error) {
+        console.log(error);
+    }
 }
 // edit by id
 exports.patchSimple = (id, simpleData) => {

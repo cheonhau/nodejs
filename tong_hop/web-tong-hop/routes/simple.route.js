@@ -10,6 +10,9 @@ router.get('/', [
     ensureAuthenticated, // đảm bảo đã login
     simpleController.simpleViewList
 ]);
+router.get('/one', [
+    simpleController.simpleGetOneInfo
+]);
 router.post('/add', [
     ensureAuthenticated,
     simpleController.simplePostAdd

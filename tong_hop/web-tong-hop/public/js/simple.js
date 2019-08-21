@@ -5,10 +5,30 @@ $('.oth-simple-add').on('click', function () {
 });
 // action edit
 $('.oth-simple-edit').on('click', function () {
-    $('#simple-form-people').attr('action', window.location.origin + '/simple/edit');
     let id = $(this).attr('data-id');
+    $('input[name=_id]').val(id);
     // ajax de lay thong tin show len form
-    $('#ActionModal').modal('show');
+    let data_send = {id : id};
+    let url  = window.location.origin + '/simple/one'
+    $.ajax({
+        url : url,
+        method : 'GET',
+        data : data_send,
+        beforeSend : function () {
+            $('.loading-overflow, #loader').fadeIn(300);
+        },
+        success : function (r) {
+            
+        },
+        complete : function () {
+            $('.loading-overflow, #loader').fadeOut(300);
+            $('#ActionModalEdit').modal('show');
+        },
+        error : function (e) {
+            console.log(e);
+            $('.loading-overflow, #loader').fadeOut(300);
+        }
+    });
 });
 // action delete 
 $('.oth-simple-delete').on('click', function () {
@@ -66,3 +86,6 @@ $('.oth-action-people').on('click', function () {
     console.log('kaka')
     $('#simple-form-people').submit();
 });
+$('.oth-action-people-edit').on('click', function () {
+    $('#simple-form-people-edit').submit();
+})
