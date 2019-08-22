@@ -141,6 +141,8 @@ exports.simplePostDelete = (req, res) => {
     });
 }
 exports.simpleGetOneInfo = (req, res) => {
+    console.log(req.body, req.params);
+
     let id = req.body.id;
     simpleService.findById(id).then( result => {
         return res.send({simple : result});

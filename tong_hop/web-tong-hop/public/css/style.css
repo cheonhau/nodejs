@@ -38,6 +38,9 @@ table thead {
 #simple-form-people .form-group, #simple-form-people .custom-radio {
     float: left;
 }
+#simple-form-people-edit .form-group, #simple-form-people-edit .custom-radio {
+    float: left;
+}
 .no-padding {
     padding-left: 0 !important;
     padding-right: 0 !important;

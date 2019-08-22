@@ -9,15 +9,30 @@ $('.oth-simple-edit').on('click', function () {
     $('input[name=_id]').val(id);
     // ajax de lay thong tin show len form
     let data_send = {id : id};
+    console.log(data_send)
     let url  = window.location.origin + '/simple/one'
     $.ajax({
         url : url,
-        method : 'GET',
+        method : 'POST',
         data : data_send,
         beforeSend : function () {
             $('.loading-overflow, #loader').fadeIn(300);
         },
         success : function (r) {
+            let simple = r.simple;
+            let image = simple.image;
+            let gender = simple.gender;
+            console.log(simple)
+            $('#name_').val(simple.name);
+            $('#email_').val(simple.email);
+            $('#birth_day_').datepicker("getDate");
+            $('#birth_day_').val(formatDate(simple.birth_day));
+            $('#note_').val(simple.note);
+            if (gender == "female") {
+                $('#female_').prop('checked', true);
+            } else {
+                $('#male_').prop('checked', true);
+            }
             
         },
         complete : function () {
@@ -75,7 +90,7 @@ $('.oth-delete-people').on('click', function () {
         }
     });
 });
-$('#birth_day').datepicker({
+$('#birth_day, #birth_day_').datepicker({
     format: 'yyyy-mm-dd',
     keyboardNavigation: false,
     forceParse: false,
@@ -89,3 +104,11 @@ $('.oth-action-people').on('click', function () {
 $('.oth-action-people-edit').on('click', function () {
     $('#simple-form-people-edit').submit();
 })
+formatDate = function (date) {
+    date = new Date(date);
+    var day = ("0" + date.getDate()).slice(-2);
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+  
+    return year + '-' + month + '-' + day;
+  }

@@ -66,6 +66,7 @@ exports.isPasswordAndUserMatch = (email, password) => {
 exports.findById = async (id) => {
     try {
         let simple = await Simple.findById(id);
+        console.log(id, simple);
         return simple;
     } catch (error) {
         console.log(error);

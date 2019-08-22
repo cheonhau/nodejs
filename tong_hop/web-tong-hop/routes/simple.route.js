@@ -10,7 +10,7 @@ router.get('/', [
     ensureAuthenticated, // đảm bảo đã login
     simpleController.simpleViewList
 ]);
-router.get('/one', [
+router.post('/one', [
     simpleController.simpleGetOneInfo
 ]);
 router.post('/add', [

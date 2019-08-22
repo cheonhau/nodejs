@@ -32,7 +32,7 @@
                             <td><%= simple.email %></td>
                             <td><%= formatDate(simple.birth_day); %></td>
                             <td><img src="images/<%= simple.image %>" alt=""></td>
-                            <td><i class="fas fa-edit oth-simple-edit" data-id="1"></i></td>
+                            <td><i class="fas fa-edit oth-simple-edit" data-id="<%= simple._id %>"></i></td>
                             <td><i class="fas fa-trash-alt oth-simple-delete" data-id="<%= simple._id %>"></i></td>
                         </tr>
                         <tr>
