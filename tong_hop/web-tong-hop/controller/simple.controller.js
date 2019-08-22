@@ -125,7 +125,104 @@ exports.simplePostAdd = (req, res) => {
     req.pipe(busboy);
 }
 exports.simplePostEdit = (req, res) => {
-    
+    let fields = {};
+    let errors = [];
+    let file_name;
+    let error_file = false;
+    var busboy = new Busboy({ 
+        headers: req.headers,
+        limits: {
+            fileSize : 100*1024*1024
+        } 
+    });
+    busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
+        fields[fieldname] = val;
+    });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+        file.on('data', function(data) {});
+        if (filename) {
+            // kiểm tra co dung la anh khong
+            errors = simpleService.validationAddImage(mimetype);
+            if ( errors.length > 0 ) {
+                req.flash('error_view', errors);
+                req.flash('result_view', fields);
+
+                res.redirect('/simple'); return ;
+            }
+            file_name = new Date().getTime().toString() + Math.floor(Math.random() * 1000) + 1 + '.' + filename.split('.')[1];
+            let path_upload = process.cwd() + '/public/images/' + file_name;
+            fstream = fs.createWriteStream( path_upload );
+            file.pipe(fstream);
+            fstream.on('close', function () {    
+            });
+
+            // kiểm tra lỗi dung lượng file
+            file.on('limit', function(){
+                error_file = true;
+                // delete file
+                fs.unlink(path_upload, function () {
+                    errors.push({msg : 'The file no longer 1 mb.'});
+                });
+            });
+            
+        }
+        file.on('end', function() {
+        });
+    });
+    busboy.on('finish', async function() {
+        // check if file no wrong limit size
+        if ( !error_file ) {
+            // kiểm tra field required, email ...
+            errors = simpleService.validationEdit(fields);
+            if ( errors.length > 0 ) {
+                req.flash('error_view', errors);
+                req.flash('result_view', fields);
+
+                res.redirect('/simple'); return ;
+            }
+            
+            // validate email không bị trùng 
+            let resultemail = simpleService.findEmailEdit(fields.id, fields.email);
+            
+            await Promise.all([resultemail]).then( result => {
+                resultemail = result[0];
+                if (!resultemail) {
+                    errors.push({ msg : 'The Email has already, please check again !' });
+                    req.flash('error_view', errors);
+                    req.flash('result_view', fields);
+
+                    res.redirect('/simple'); return ;
+                }
+                // save tới database 
+                if (file_name) {
+                    fields['image'] = file_name; 
+                    simpleService.removeImage(fields.id);
+                }
+                simpleService.patchSimple(fields.id, fields)
+                    .then( (result) => {
+                        req.flash(
+                            'success_msg',
+                            'You are save data successfully !'
+                        );
+                        res.redirect('/simple');
+                    })
+                    .catch( err => {
+                        console.log(err);
+                        res.redirect('/simple');
+                    });
+            }).catch ( error => {
+                console.log(error);
+            })
+        } else {
+            if ( errors.length > 0 ) {
+                req.flash('error_view', errors);
+                req.flash('result_view', fields);
+
+                res.redirect('/simple'); return ;
+            }
+        }
+    });
+    req.pipe(busboy);
 }
 exports.simplePostDelete = (req, res) => {
     let id = req.body.id;
@@ -141,8 +238,6 @@ exports.simplePostDelete = (req, res) => {
     });
 }
 exports.simpleGetOneInfo = (req, res) => {
-    console.log(req.body, req.params);
-
     let id = req.body.id;
     simpleService.findById(id).then( result => {
         return res.send({simple : result});

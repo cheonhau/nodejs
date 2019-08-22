@@ -6,7 +6,7 @@ $('.oth-simple-add').on('click', function () {
 // action edit
 $('.oth-simple-edit').on('click', function () {
     let id = $(this).attr('data-id');
-    $('input[name=_id]').val(id);
+    $('input[name=id]').val(id);
     // ajax de lay thong tin show len form
     let data_send = {id : id};
     console.log(data_send)
@@ -98,7 +98,17 @@ $('#birth_day, #birth_day_').datepicker({
     autoclose: true,
 });
 $('.oth-action-people').on('click', function () {
-    console.log('kaka')
+    let _this = $(this);
+    let name = $('#name').val();
+    let email = $('#email').val();
+    let password = $('#password').val();
+    let confirm_password = $('#confirm-password').val();
+    let birth_day = $('#birth_day').val();
+    let image = $('#image').val();
+    let note = $('#note').val();
+    let gender = $('.gender:checked');
+    console.log(image, '--', gender.length);
+    return false;
     $('#simple-form-people').submit();
 });
 $('.oth-action-people-edit').on('click', function () {
