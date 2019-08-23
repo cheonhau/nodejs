@@ -8,13 +8,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" id="simple-form-people" action="/simple/add" enctype="multipart/form-data">
-          <%# <input type="hidden" name="_csrf" value=""> %>
+        <form method="POST" id="simple-form-people" action="/simple/add" enctype="multipart/form-data" class="row">
+          <%# <input type="hidden" name="_csrf" value="" class="is-valid is-invalid"> %>
           <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="name" class="col-form-label">Your Name:</label>
             <input 
               type="text" 
-              class="form-control is-valid" 
+              class="form-control required" 
               id="name" name="name" 
               value="<%= result_view != '' ? result_view[0].name : '' %>">
               <div class="invalid-feedback">Sorry, The name is required. Try again !</div>
@@ -23,44 +23,45 @@
             <label for="email" class="col-form-label">Your Email:</label>
             <input 
               type="text" 
-              class="form-control is-invalid" 
+              class="form-control required email" 
               id="email" 
               name="email"
               value="<%= result_view != '' ? result_view[0].email : '' %>">
               <div class="invalid-feedback">Sorry, this is not email. Try again !</div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="password" class="col-form-label">Your Password:</label>
             <input 
               type="password" 
-              class="form-control" 
+              class="form-control required" 
               id="password" 
               name="password"
               value="<%= result_view != '' ? result_view[0].password : '' %>">
               <div class="invalid-feedback">Sorry, the password is required. Try again !</div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="confirm-password" class="col-form-label">Confirm Password:</label>
             <input 
               type="password" 
-              class="form-control" 
+              class="form-control confirm-password" 
+              data-id="password"
               id="confirm-password" 
               name="confirm_password"
               value="<%= result_view != '' ? result_view[0].confirm_password : '' %>">
               <div class="invalid-feedback">Sorry, the password is not same. Try again !</div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="birth_day" class="col-form-label">Your BirthDay:</label>
             <input 
               type="text" 
-              class="form-control js-date js-nokeyboard" 
+              class="form-control js-date js-nokeyboard required" 
               id="birth_day" 
               name="birth_day" 
               autocomplete="off"
               value="<%= result_view != '' ? result_view[0].birth_day : '' %>">
               <div class="invalid-feedback">Sorry, the birth day is required. Try again !</div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="image" class="col-form-label">Image Personal:</label>
             <div class="input-group mb-3">
               <div class="custom-file">
@@ -74,16 +75,16 @@
               </div>
             </div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="note" class="col-form-label">Your introduce:</label>
             <textarea 
-              class="form-control" 
+              class="form-control required" 
               id="note" 
               name="note"><%= result_view != '' ? result_view[0].note : '' %>
             </textarea>
             <div class="invalid-feedback">Sorry, the note is required. Try again !</div>
           </div>
-          <div class="form-group col-sm-6 col-12">
+          <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="male" class="col-form-label col-sm-12 col-12 no-padding">Your Gender:</label>
             <div class="custom-control custom-radio col-sm-6 col-12">
               <input 
@@ -96,7 +97,7 @@
                 >
               <label class="custom-control-label" for="male">Male</label>
             </div>
-            <div class="custom-control custom-radio col-sm-6 col-12">
+            <div class="custom-control custom-radio col-sm-6 col-12 has-success has-danger">
               <input 
                 type="radio" 
                 id="female" 
@@ -107,7 +108,7 @@
                 >
               <label class="custom-control-label" for="female">FeMale</label>
             </div>
-            <div class="invalid-feedback">Sorry, The gender is required. Try again !</div>
+            <div class="invalid-feedback" id="gender">Sorry, The gender is required. Try again !</div>
           </div>
         </form>
       </div>
@@ -134,7 +135,7 @@
             <label for="name_" class="col-form-label">Your Name:</label>
             <input 
               type="text" 
-              class="form-control" 
+              class="form-control required" 
               id="name_" name="name" 
               value="">
           </div>
@@ -142,7 +143,7 @@
             <label for="email_" class="col-form-label">Your Email:</label>
             <input 
               type="text" 
-              class="form-control" 
+              class="form-control required email" 
               id="email_" 
               name="email"
               value="">
@@ -151,7 +152,7 @@
             <label for="birth_day_" class="col-form-label">Your BirthDay:</label>
             <input 
               type="text" 
-              class="form-control js-date js-nokeyboard" 
+              class="form-control js-date js-nokeyboard required" 
               id="birth_day_" 
               name="birth_day" 
               autocomplete="off"
@@ -163,7 +164,7 @@
               <div class="custom-file">
                 <input 
                   type="file" 
-                  class="custom-file-input" 
+                  class="custom-file-input required" 
                   id="image_" 
                   name="image">
                 <label class="custom-file-label" for="image">Choose file</label>
@@ -173,7 +174,7 @@
           <div class="form-group col-sm-6 col-12">
             <label for="note_" class="col-form-label">Your introduce:</label>
             <textarea 
-              class="form-control" 
+              class="form-control required" 
               id="note_" 
               name="note">
             </textarea>
@@ -185,7 +186,7 @@
                 type="radio" 
                 id="male_" 
                 name="gender" 
-                class="custom-control-input" 
+                class="custom-control-input gender_" 
                 value="male"
                 >
               <label class="custom-control-label" for="male_">Male</label>
@@ -195,7 +196,7 @@
                 type="radio" 
                 id="female_" 
                 name="gender" 
-                class="custom-control-input"
+                class="custom-control-input gender_"
                 value="female"
                 >
               <label class="custom-control-label" for="female_">FeMale</label>

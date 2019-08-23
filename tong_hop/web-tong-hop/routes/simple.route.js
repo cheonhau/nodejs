@@ -7,7 +7,7 @@ const simpleController = require('../controller/simple.controller');
 
 // list simple
 router.get('/', [
-    ensureAuthenticated, // đảm bảo đã login
+    // ensureAuthenticated, // đảm bảo đã login
     simpleController.simpleViewList
 ]);
 router.post('/one', [

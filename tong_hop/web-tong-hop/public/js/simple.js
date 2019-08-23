@@ -33,7 +33,7 @@ $('.oth-simple-edit').on('click', function () {
             } else {
                 $('#male_').prop('checked', true);
             }
-            
+            $('.required').focusout();
         },
         complete : function () {
             $('.loading-overflow, #loader').fadeOut(300);
@@ -98,21 +98,180 @@ $('#birth_day, #birth_day_').datepicker({
     autoclose: true,
 });
 $('.oth-action-people').on('click', function () {
-    let _this = $(this);
-    let name = $('#name').val();
-    let email = $('#email').val();
-    let password = $('#password').val();
-    let confirm_password = $('#confirm-password').val();
-    let birth_day = $('#birth_day').val();
-    let image = $('#image').val();
-    let note = $('#note').val();
+    let flg = true;
+    let name = $('#name').val().trim();
+    let email = $('#email').val().trim();
+    let password = $('#password').val().trim();
+    let confirm_password = $('#confirm-password').val().trim();
+    let birth_day = $('#birth_day').val().trim();
+    let image = $('#image').val().trim();
+    let note = $('#note').val().trim();
     let gender = $('.gender:checked');
-    console.log(image, '--', gender.length);
-    return false;
-    $('#simple-form-people').submit();
+    if ( !name ) {
+        $('#name').removeClass('is-invalid').addClass('is-invalid');
+        $('#name').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#name').removeClass('is-invalid').addClass('is-valid');
+        $('#name').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if ( !email || !validateEmail(email) ) {
+        $('#email').removeClass('is-valid').addClass('is-invalid');
+        $('#email').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#email').removeClass('is-invalid').addClass('is-valid');
+        $('#email').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!password) {
+        $('#password').removeClass('is-valid').addClass('is-invalid');
+        $('#password').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#password').removeClass('is-invalid').addClass('is-valid');
+        $('#password').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (password !== confirm_password) {
+        $('#confirm-password').removeClass('is-valid').addClass('is-invalid');
+        $('#confirm-password').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#confirm-password').removeClass('is-invalid').addClass('is-valid');
+        $('#confirm-password').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!birth_day) {
+        $('#birth_day').removeClass('is-valid').addClass('is-invalid');
+        $('#birth_day').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#birth_day').removeClass('is-invalid').addClass('is-valid');
+        $('#birth_day').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!image) {
+        $('#image').removeClass('is-valid').addClass('is-invalid');
+        $('#image').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#image').removeClass('is-invalid').addClass('is-valid');
+        $('#image').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!note) {
+        $('#note').removeClass('is-valid').addClass('is-invalid');
+        $('#note').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#note').removeClass('is-invalid').addClass('is-valid');
+        $('#note').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (gender.length == 0) {
+        $('#gender').fadeIn(300);
+        flg = false;
+    } else {
+        $('#gender').fadeOut(300);
+    }
+    if (flg) {
+        $('#simple-form-people').submit();
+    }
 });
+$('.required').on('keyup focusout', function () {
+    let _this = $(this);
+    console.log(_this.val())
+    if ( !_this.val() ) {
+        _this.removeClass('is-invalid').addClass('is-invalid');
+        _this.parent().find('.invalid-feedback').fadeIn(300);
+    } else {
+        _this.removeClass('is-invalid').addClass('is-valid');
+        _this.parent().find('.invalid-feedback').fadeOut(300);
+    }
+});
+$('.email').on('keyup focusout', function () {
+    let _this = $(this);
+    if ( !_this.val() || !validateEmail(_this.val()) ) {
+        _this.removeClass('is-invalid').addClass('is-invalid');
+        _this.parent().find('.invalid-feedback').fadeIn(300);
+    } else {
+        _this.removeClass('is-invalid').addClass('is-valid');
+        _this.parent().find('.invalid-feedback').fadeOut(300);
+    }
+});
+$('.confirm-password').on('keyup focusout', function () {
+    let _this = $(this);
+    let confirm = _this.data('id');
+    let val_confirm = $('#' + confirm).val();
+    if ( !_this.val() || _this.val() != val_confirm ) {
+        _this.removeClass('is-invalid').addClass('is-invalid');
+        _this.parent().find('.invalid-feedback').fadeIn(300);
+    } else {
+        _this.removeClass('is-invalid').addClass('is-valid');
+        _this.parent().find('.invalid-feedback').fadeOut(300);
+    }
+})
 $('.oth-action-people-edit').on('click', function () {
-    $('#simple-form-people-edit').submit();
+    let flg = true;
+    let name = $('#name_').val().trim();
+    let email = $('#email_').val().trim();
+    let password = $('#password_').val().trim();
+    let confirm_password = $('#confirm-password_').val().trim();
+    let birth_day = $('#birth_day_').val().trim();
+    let note = $('#note_').val().trim();
+    let gender = $('.gender_:checked');
+    if ( !name ) {
+        $('#name_').removeClass('is-invalid').addClass('is-invalid');
+        $('#name_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#name_').removeClass('is-invalid').addClass('is-valid');
+        $('#name_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if ( !email || !validateEmail(email) ) {
+        $('#email_').removeClass('is-valid').addClass('is-invalid');
+        $('#email_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#email_').removeClass('is-invalid').addClass('is-valid');
+        $('#email_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!password) {
+        $('#password_').removeClass('is-valid').addClass('is-invalid');
+        $('#password_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#password_').removeClass('is-invalid').addClass('is-valid');
+        $('#password_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (password !== confirm_password) {
+        $('#confirm-password_').removeClass('is-valid').addClass('is-invalid');
+        $('#confirm-password_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#confirm-password_').removeClass('is-invalid').addClass('is-valid');
+        $('#confirm-password_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!birth_day) {
+        $('#birth_day_').removeClass('is-valid').addClass('is-invalid');
+        $('#birth_day_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#birth_day_').removeClass('is-invalid').addClass('is-valid');
+        $('#birth_day_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (!note) {
+        $('#note_').removeClass('is-valid').addClass('is-invalid');
+        $('#note_').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#note_').removeClass('is-invalid').addClass('is-valid');
+        $('#note_').parent().find('.invalid-feedback').fadeOut(300);
+    }
+    if (gender.length == 0) {
+        $('#gender_').fadeIn(300);
+        flg = false;
+    } else {
+        $('#gender_').fadeOut(300);
+    }
+    if (flg) {
+        $('#simple-form-people-edit').submit();
+    }
 })
 formatDate = function (date) {
     date = new Date(date);
