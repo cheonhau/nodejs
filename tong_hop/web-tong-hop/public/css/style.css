@@ -33,7 +33,7 @@ table img {
     height: 5vw;
 }
 table thead {
-    border-top: solid 7px #EB6864;
+    border-top: solid 2px #EB6864;
 }
 #simple-form-people .form-group, #simple-form-people .custom-radio {
     float: left;

@@ -6,7 +6,7 @@
     <div class="oth-form-container">
         <div class="oth-form-table">
             <div class="oth-form-table-header">
-                <div class="btn btn-info float-right oth-simple-add" data-toggle="modal" data-target="#ActionModal">
+                <div class="btn btn-danger float-right oth-simple-add" data-toggle="modal" data-target="#ActionModal">
                     Add Item
                 </div>
             </div>
@@ -25,9 +25,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% simples.forEach(simple => { %>
+                        <% simples.forEach( (simple, index) => { %>
                         <tr>
-                        <th scope="row">1</th>
+                        <th scope="row"><%= index + 1 %></th>
                             <td><%= simple.name %></td>
                             <td><%= simple.email %></td>
                             <td><%= formatDate(simple.birth_day); %></td>

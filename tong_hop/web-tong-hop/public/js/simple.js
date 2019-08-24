@@ -9,7 +9,6 @@ $('.oth-simple-edit').on('click', function () {
     $('input[name=id]').val(id);
     // ajax de lay thong tin show len form
     let data_send = {id : id};
-    console.log(data_send)
     let url  = window.location.origin + '/simple/one'
     $.ajax({
         url : url,
@@ -22,7 +21,6 @@ $('.oth-simple-edit').on('click', function () {
             let simple = r.simple;
             let image = simple.image;
             let gender = simple.gender;
-            console.log(simple)
             $('#name_').val(simple.name);
             $('#email_').val(simple.email);
             $('#birth_day_').datepicker("getDate");
@@ -95,7 +93,16 @@ $('#birth_day, #birth_day_').datepicker({
     keyboardNavigation: false,
     forceParse: false,
     calendarWeeks: true,
-    autoclose: true,
+    autoclose: true
+}).on("change", function() {
+    if ( !$(this).val() ) {
+        $('#birth_day').removeClass('is-valid').addClass('is-invalid');
+        $('#birth_day').parent().find('.invalid-feedback').fadeIn(300);
+        flg = false;
+    } else {
+        $('#birth_day').removeClass('is-invalid').addClass('is-valid');
+        $('#birth_day').parent().find('.invalid-feedback').fadeOut(300);
+    }
 });
 $('.oth-action-people').on('click', function () {
     let flg = true;
@@ -149,7 +156,7 @@ $('.oth-action-people').on('click', function () {
     }
     if (!image) {
         $('#image').removeClass('is-valid').addClass('is-invalid');
-        $('#image').parent().find('.invalid-feedback').fadeIn(300);
+        $('#image').parent().find('.invalid-feedback').text('Sorry, the image is required. Try again !').fadeIn(300);
         flg = false;
     } else {
         $('#image').removeClass('is-invalid').addClass('is-valid');
@@ -175,8 +182,7 @@ $('.oth-action-people').on('click', function () {
 });
 $('.required').on('keyup focusout', function () {
     let _this = $(this);
-    console.log(_this.val())
-    if ( !_this.val() ) {
+    if ( !_this.val().trim() ) {
         _this.removeClass('is-invalid').addClass('is-invalid');
         _this.parent().find('.invalid-feedback').fadeIn(300);
     } else {
@@ -194,6 +200,29 @@ $('.email').on('keyup focusout', function () {
         _this.parent().find('.invalid-feedback').fadeOut(300);
     }
 });
+$('.image').on('change', function () {
+    let _this = $(this);
+    let file = this.files[0];
+
+    let  fileType = file['type'];
+    let fileSize = file['size'];
+
+    let validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    let validImageSizes = 1*1024*1024; // 1mb
+
+    let textNotValidType = 'The image have to rail gif, jpeg and png';
+    let textNotValidSize = 'The Image size small then 1mb';
+    if (!validImageTypes.includes(fileType)) {
+        _this.removeClass('is-invalid').addClass('is-invalid');
+        _this.closest('.form-group').find('.invalid-feedback').text(textNotValidType).fadeIn(300);
+    } else if ( fileSize > validImageSizes ) {
+        _this.removeClass('is-invalid').addClass('is-invalid');
+        _this.closest('.form-group').find('.invalid-feedback').text(textNotValidSize).fadeIn(300);
+    } else {
+        _this.removeClass('is-invalid').addClass('is-valid');
+        _this.closest('.form-group').find('.invalid-feedback').fadeOut(300);
+    }
+})
 $('.confirm-password').on('keyup focusout', function () {
     let _this = $(this);
     let confirm = _this.data('id');
