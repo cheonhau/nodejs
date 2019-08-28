@@ -23,7 +23,8 @@ exports.simpleViewList = async (req, res) => {
     await Promise.all([totalItem, simples]).then( (values) => {
         totalItem = values[0]; simples = values[1];
         res.render('simples/list', {
-            simples, totalItem, limit, page, current_url
+            simples, totalItem, limit, page, current_url,
+            csrfToken: req.csrfToken()
         });
     }).catch(err => {
         console.log(err);

@@ -7,7 +7,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 // const bodyParser = require('body-parser');
-const util = require("util");
+const util = require("util");// console
 
 // require debug
 require('./debug/config');
