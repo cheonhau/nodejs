@@ -12,10 +12,10 @@ var bodyParser = require('body-parser')
 // setup route middlewares
 var csrfProtection = csrf({ cookie: true })
 var parseForm = bodyParser.urlencoded({ extended: false })
-var app = express()
+var app = express();
 
 // we need this because "cookie" is true in csrfProtection
-app.use(cookieParser())
+app.use(cookieParser());
 
 // list simple
 router.get('/', [
@@ -28,14 +28,19 @@ router.post('/one', [
 ]);
 router.post('/add', [
     ensureAuthenticated,
+    parseForm,
+    csrfProtection,
     simpleController.simplePostAdd
 ]);
 router.post('/edit', [
     ensureAuthenticated,
+    parseForm,
+    csrfProtection,
     simpleController.simplePostEdit
 ]);
 router.post('/delete', [
     ensureAuthenticated,
+    csrfProtection,
     simpleController.simplePostDelete
 ]);
 

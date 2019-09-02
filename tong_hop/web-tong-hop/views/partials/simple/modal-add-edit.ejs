@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <form method="POST" id="simple-form-people" action="/simple/add" enctype="multipart/form-data" class="row">
-          <%# <input type="hidden" name="_csrf" value="" class="is-valid is-invalid"> %>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <div class="form-group col-sm-6 col-12 has-success has-danger">
             <label for="name" class="col-form-label">Your Name:</label>
             <input 
